@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учебная комната | Chinese Up</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F7F5F2;
+            --bg-card: #FFFFFF;
+            --text: #1A1A1A;
+            --text-muted: #6B6B6B;
+            --accent: #9B1B1B;
+            --accent-hover: #7A1515;
+            --accent-light: rgba(155, 27, 27, 0.08);
+            --border: #E8E4DF;
+            --success: #2E7D32;
+            --success-bg: #E8F5E9;
+            --sidebar-width: 280px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: #1A1A1A;
+            color: #fff;
+            padding: 24px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+            z-index: 50;
+            transition: transform 0.3s;
+        }
+
+        .sidebar-logo {
+            padding: 0 24px 28px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-logo span { color: #E57373; }
+
+        .user-info {
+            padding: 0 24px 24px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 16px;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .user-level {
+            font-size: 0.85rem;
+            color: #A0A0A0;
+        }
+
+        .nav-section {
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #777;
+            margin-top: 12px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 24px;
+            color: #C0C0C0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+        }
+
+        .nav-item.active {
+            border-left: 3px solid var(--accent);
+            padding-left: 21px;
+        }
+
+        .nav-item .icon { font-size: 1.15rem; width: 24px; text-align: center; }
+
+        .main {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 32px 40px;
+            max-width: 1100px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .stat-value.accent { color: var(--accent); }
+
+        .progress-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 36px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: var(--border);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .module-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .module-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .module-card.locked {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        .module-card.locked:hover {
+            transform: none;
+            border-color: var(--border);
+            box-shadow: none;
+        }
+
+        .module-num {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .module-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .module-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .module-status {
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .status-done {
+            background: var(--success-bg);
+            color: var(--success);
+        }
+
+        .status-progress {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .status-locked {
+            background: #F0F0F0;
+            color: #888;
+        }
+
+        .lessons-panel {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .lessons-panel.active { display: block; }
+
+        .lessons-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lessons-header h3 { font-size: 1.15rem; }
+
+        .btn-back {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .lesson-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+            cursor: pointer;
+        }
+
+        .lesson-item:last-child { border-bottom: none; }
+
+        .lesson-item:hover { background: var(--bg); }
+
+        .lesson-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .lesson-num.done {
+            background: var(--success);
+            color: white;
+        }
+
+        .lesson-info { flex: 1; }
+
+        .lesson-title { font-weight: 500; margin-bottom: 2px; }
+
+        .lesson-duration {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .lesson-action {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 40;
+        }
+
+        .overlay.show { display: block; }
+
+        @media (max-width: 900px) {
+            .stats { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open { transform: translateX(0); }
+            .main {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+            .menu-btn { display: block; }
+            .stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .topbar { gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">Chinese <span>Up</span></div>
+
+            <div class="user-info">
+                <div class="user-name">Акмаль</div>
+                <div class="user-level">Уровень: HSK 1 · Модуль 2</div>
+            </div>
+
+            <div class="nav-section">Обучение</div>
+            <button class="nav-item active" data-view="dashboard">
+                <span class="icon">🏠</span> Главная
+            </button>
+            <button class="nav-item" data-view="modules">
+                <span class="icon">📚</span> Все модули
+            </button>
+            <button class="nav-item" data-view="progress">
+                <span class="icon">📊</span> Прогресс
+            </button>
+
+            <div class="nav-section">Аккаунт</div>
+            <button class="nav-item" data-view="profile">
+                <span class="icon">👤</span> Профиль
+            </button>
+            <a href="index.html" class="nav-item" style="text-decoration:none;">
+                <span class="icon">🚪</span> Выйти
+            </a>
+        </aside>
+
+        <main class="main">
+            <div class="topbar">
+                <div>
+                    <button class="menu-btn" id="menuBtn">☰</button>
+                    <h1 class="page-title" id="pageTitle">Учебная комната</h1>
+                    <p class="page-subtitle" id="pageSubtitle">Добро пожаловать! Продолжайте с того места, где остановились.</p>
+                </div>
+            </div>
+
+            <div id="view-dashboard">
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-label">Пройдено уроков</div>
+                        <div class="stat-value accent">18</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Текущий модуль</div>
+                        <div class="stat-value">2</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Общий прогресс</div>
+                        <div class="stat-value">15%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Дней подряд</div>
+                        <div class="stat-value">4</div>
+                    </div>
+                </div>
+
+                <div class="progress-block">
+                    <div class="progress-header">
+                        <span>Прогресс по курсу (HSK1 → HSK3)</span>
+                        <span>18 / 240 уроков</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 7.5%"></div>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Продолжить обучение</h2>
+                <div class="modules-grid" id="continueModules"></div>
+            </div>
+
+            <div id="view-modules" style="display:none;">
+                <h2 class="section-title">Все модули курса</h2>
+                <div class="modules-grid" id="allModules"></div>
+            </div>
+
+            <div class="lessons-panel" id="lessonsPanel">
+                <div class="lessons-header">
+                    <h3 id="lessonsTitle">Модуль 1</h3>
+                    <button class="btn-back" id="btnBack">← Назад</button>
+                </div>
+                <div id="lessonsList"></div>
+            </div>
+
+            <div id="view-progress" style="display:none;">
+                <div class="progress-block">
+                    <div class="progress-header">
+                        <span>Общий прогресс курса</span>
+                        <span>18 / 240</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 7.5%"></div>
+                    </div>
+                </div>
+                <div class="stats" style="margin-top:24px;">
+                    <div class="stat-card">
+                        <div class="stat-label">HSK 1</div>
+                        <div class="stat-value accent">45%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">HSK 2</div>
+                        <div class="stat-value">0%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">HSK 3</div>
+                        <div class="stat-value">0%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Всего часов</div>
+                        <div class="stat-value">6.5</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-profile" style="display:none;">
+                <div class="progress-block">
+                    <h3 style="margin-bottom:16px;">Профиль ученика</h3>
+                    <p style="margin-bottom:8px;"><strong>Имя:</strong> Акмаль</p>
+                    <p style="margin-bottom:8px;"><strong>Email:</strong> student@gmail.com</p>
+                    <p style="margin-bottom:8px;"><strong>Дата начала:</strong> 1 августа 2026</p>
+                    <p style="margin-bottom:8px;"><strong>Текущий уровень:</strong> HSK 1</p>
+                    <p><strong>Статус:</strong> Активный ученик</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const modules = [
+            { id: 1, title: "Основы произношения и пиньинь", lessons: 20, done: 20, status: "done", hsk: "HSK1" },
+            { id: 2, title: "Базовые фразы и приветствия", lessons: 20, done: 12, status: "progress", hsk: "HSK1" },
+            { id: 3, title: "Числа, время и даты", lessons: 20, done: 0, status: "locked", hsk: "HSK1" },
+            { id: 4, title: "Семья и описание людей", lessons: 20, done: 0, status: "locked", hsk: "HSK1" },
+            { id: 5, title: "Еда и ресторан", lessons: 20, done: 0, status: "locked", hsk: "HSK2" },
+            { id: 6, title: "Покупки и деньги", lessons: 20, done: 0, status: "locked", hsk: "HSK2" },
+            { id: 7, title: "Транспорт и направления", lessons: 20, done: 0, status: "locked", hsk: "HSK2" },
+            { id: 8, title: "Работа и учёба", lessons: 20, done: 0, status: "locked", hsk: "HSK2" },
+            { id: 9, title: "Путешествия", lessons: 20, done: 0, status: "locked", hsk: "HSK3" },
+            { id: 10, title: "Здоровье и самочувствие", lessons: 20, done: 0, status: "locked", hsk: "HSK3" },
+            { id: 11, title: "Хобби и свободное время", lessons: 20, done: 0, status: "locked", hsk: "HSK3" },
+            { id: 12, title: "Подготовка к HSK3", lessons: 20, done: 0, status: "locked", hsk: "HSK3" },
+        ];
+
+        const lessonTitles = [
+            "Введение в урок", "Новые слова", "Произношение", "Грамматика", "Диалог",
+            "Практика чтения", "Аудирование", "Письмо иероглифов", "Упражнения", "Проверка"
+        ];
+
+        function statusLabel(status) {
+            if (status === "done") return '<span class="module-status status-done">Пройден</span>';
+            if (status === "progress") return '<span class="module-status status-progress">В процессе</span>';
+            return '<span class="module-status status-locked">Закрыт</span>';
+        }
+
+        function renderModuleCard(m) {
+            const pct = Math.round((m.done / m.lessons) * 100);
+            return `
+                <div class="module-card ${m.status === 'locked' ? 'locked' : ''}" 
+                     data-id="${m.id}" ${m.status !== 'locked' ? 'onclick="openModule('+m.id+')"' : ''}>
+                    <div class="module-num">Модуль ${m.id} · ${m.hsk}</div>
+                    <div class="module-title">${m.title}</div>
+                    <div class="module-meta">
+                        <span>${m.done}/${m.lessons} уроков · ${pct}%</span>
+                        ${statusLabel(m.status)}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderModules() {
+            const continueEl = document.getElementById('continueModules');
+            const allEl = document.getElementById('allModules');
+            const active = modules.filter(m => m.status === 'progress' || m.status === 'done').slice(-2);
+            continueEl.innerHTML = active.map(m => renderModuleCard(m)).join('') || 
+                modules.slice(0,2).map(m => renderModuleCard(m)).join('');
+            allEl.innerHTML = modules.map(m => renderModuleCard(m)).join('');
+        }
+
+        function openModule(id) {
+            const m = modules.find(x => x.id === id);
+            if (!m || m.status === 'locked') return;
+
+            document.getElementById('view-dashboard').style.display = 'none';
+            document.getElementById('view-modules').style.display = 'none';
+            document.getElementById('view-progress').style.display = 'none';
+            document.getElementById('view-profile').style.display = 'none';
+            document.getElementById('lessonsPanel').classList.add('active');
+
+            document.getElementById('lessonsTitle').textContent = `Модуль ${m.id}: ${m.title}`;
+            
+            let html = '';
+            for (let i = 1; i <= m.lessons; i++) {
+                const isDone = i <= m.done;
+                const title = lessonTitles[(i-1) % lessonTitles.length] + (i > 10 ? ` ${Math.ceil(i/10)}` : '');
+                html += `
+                    <div class="lesson-item">
+                        <div class="lesson-num ${isDone ? 'done' : ''}">${isDone ? '✓' : i}</div>
+                        <div class="lesson-info">
+                            <div class="lesson-title">Урок ${i}. ${title}</div>
+                            <div class="lesson-duration">≈ 15–20 мин</div>
+                        </div>
+                        <div class="lesson-action">${isDone ? 'Повторить' : 'Начать'}</div>
+                    </div>
+                `;
+            }
+            document.getElementById('lessonsList').innerHTML = html;
+        }
+
+        document.getElementById('btnBack').addEventListener('click', () => {
+            document.getElementById('lessonsPanel').classList.remove('active');
+            showView('modules');
+        });
+
+        function showView(view) {
+            ['dashboard','modules','progress','profile'].forEach(v => {
+                document.getElementById('view-' + v).style.display = v === view ? 'block' : 'none';
+            });
+            document.getElementById('lessonsPanel').classList.remove('active');
+
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            const btn = document.querySelector(`[data-view="${view}"]`);
+            if (btn) btn.classList.add('active');
+
+            const titles = {
+                dashboard: ['Учебная комната', 'Добро пожаловать! Продолжайте с того места, где остановились.'],
+                modules: ['Все модули', '12 модулей от HSK1 до HSK3'],
+                progress: ['Ваш прогресс', 'Статистика обучения'],
+                profile: ['Профиль', 'Информация об аккаунте']
+            };
+            document.getElementById('pageTitle').textContent = titles[view][0];
+            document.getElementById('pageSubtitle').textContent = titles[view][1];
+        }
+
+        document.querySelectorAll('[data-view]').forEach(btn => {
+            btn.addEventListener('click', () => showView(btn.dataset.view));
+        });
+
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            sidebar.classList.add('open');
+            overlay.classList.add('show');
+        });
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+        });
+
+        renderModules();
+    </script>
+</body>
+</html>
