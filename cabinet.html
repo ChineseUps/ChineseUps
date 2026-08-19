@@ -1,669 +1,843 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Учебная комната | Chinese Up</title>
-    <meta name="robots" content="noindex, nofollow">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
-    <link rel="icon" href="assets/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #F7F5F2;
-            --bg-card: #FFFFFF;
-            --text: #1A1A1A;
-            --text-muted: #6B6B6B;
-            --accent: #9B1B1B;
-            --accent-hover: #7A1515;
-            --accent-light: rgba(155, 27, 27, 0.08);
-            --border: #E8E4DF;
-            --success: #2E7D32;
-            --success-bg: #E8F5E9;
-            --sidebar-width: 280px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Учебная комната | Chinese Up</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F5F2; --bg-card:#FFFFFF; --text:#1A1A1A; --text-muted:#6B6B6B;
+  --accent:#9B1B1B; --accent-hover:#7A1515; --accent-light:rgba(155,27,27,.08);
+  --border:#E8E4DF; --border-strong:#D8D2CB;
+  --green:#2E7D32; --green-light:#E8F5E9; --green-dark:#1B5E20;
+  --err:#C62828; --err-light:#FDECEA;
+  --warn:#B26A00; --warn-bg:#FFF4E0;
+  --sidebar-width:280px; --radius:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
+.layout{display:flex;min-height:100vh}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+/* ---------- sidebar ---------- */
+.sidebar{width:var(--sidebar-width);background:#1A1A1A;color:#fff;padding:24px 0;position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:50;transition:transform .3s}
+.sidebar-logo{padding:0 24px 24px;font-weight:700;font-size:1.25rem;display:flex;align-items:center;gap:8px;border-bottom:1px solid #333;margin-bottom:20px;text-decoration:none;color:#fff}
+.sidebar-logo span{color:#E57373}
+.user-info{padding:0 24px 22px;border-bottom:1px solid #333;margin-bottom:12px}
+.user-name{font-weight:600;margin-bottom:4px}
+.user-level{font-size:.85rem;color:#A0A0A0}
+.user-xp{font-size:.8rem;color:#E57373;margin-top:8px;font-weight:600}
+.nav-section{padding:10px 24px 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:#777;margin-top:10px}
+.nav-item{display:flex;align-items:center;gap:12px;padding:11px 24px;color:#C0C0C0;text-decoration:none;font-size:.95rem;font-weight:500;transition:.2s;cursor:pointer;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+.nav-item:hover,.nav-item.active{background:rgba(255,255,255,.08);color:#fff}
+.nav-item.active{border-left:3px solid var(--accent);padding-left:21px}
+.nav-item .icon{font-size:1.1rem;width:22px;text-align:center}
 
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-            min-height: 100vh;
-        }
+/* ---------- main ---------- */
+.main{flex:1;margin-left:var(--sidebar-width);padding:32px 40px 80px;max-width:1120px}
+.topbar{margin-bottom:26px}
+.page-title{font-size:1.75rem;font-weight:800;letter-spacing:-.02em}
+.page-subtitle{color:var(--text-muted);font-size:.95rem;margin-top:4px}
+.menu-btn{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;padding:0 0 8px}
 
-        .layout {
-            display: flex;
-            min-height: 100vh;
-        }
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.stat-label{font-size:.85rem;color:var(--text-muted);margin-bottom:6px}
+.stat-value{font-size:1.6rem;font-weight:800}
+.stat-value.accent{color:var(--accent)}
+.stat-hint{font-size:.78rem;color:var(--text-muted);margin-top:4px}
 
-        .sidebar {
-            width: var(--sidebar-width);
-            background: #1A1A1A;
-            color: #fff;
-            padding: 24px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            overflow-y: auto;
-            z-index: 50;
-            transition: transform 0.3s;
-        }
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:26px}
+.progress-header{display:flex;justify-content:space-between;gap:12px;margin-bottom:12px;font-weight:600;font-size:.95rem}
+.progress-bar{height:10px;background:var(--border);border-radius:5px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);border-radius:5px;transition:width .5s ease}
+.progress-fill.green{background:var(--green)}
 
-        .sidebar-logo {
-            padding: 0 24px 28px;
-            font-weight: 700;
-            font-size: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 1px solid #333;
-            margin-bottom: 20px;
-        }
+.section-title{font-size:1.2rem;font-weight:700;margin-bottom:14px}
+.section-title.sp{margin-top:8px}
 
-        .sidebar-logo span { color: #E57373; }
+/* ---------- path (duolingo-style) ---------- */
+.path{max-width:560px;margin:0 auto 40px}
+.path-module{margin-bottom:36px}
+.path-head{background:var(--accent);color:#fff;border-radius:14px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:22px}
+.path-head .lvl{font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;opacity:.85;font-weight:700}
+.path-head h3{font-size:1.05rem;font-weight:700;margin-top:2px}
+.path-head .cnt{font-size:.85rem;font-weight:700;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:20px;white-space:nowrap}
+.path-list{display:flex;flex-direction:column;align-items:center;gap:0}
+.node-wrap{display:flex;flex-direction:column;align-items:center}
+.node-wrap .link{width:3px;height:18px;background:var(--border-strong);border-radius:2px}
+.node-wrap .link.on{background:var(--green)}
+.node{width:76px;height:76px;border-radius:50%;border:none;cursor:pointer;background:var(--bg-card);
+  box-shadow:0 5px 0 var(--border-strong);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:inherit;transition:transform .12s,box-shadow .12s;position:relative}
+.node:active{transform:translateY(4px);box-shadow:0 1px 0 var(--border-strong)}
+.node .n{font-size:1.15rem;font-weight:800;color:var(--text-muted)}
+.node .zh{font-family:'Noto Sans SC',sans-serif;font-size:1.5rem;line-height:1}
+.node.done{background:var(--green);box-shadow:0 5px 0 var(--green-dark)}
+.node.done .n{color:#fff;font-size:1.6rem}
+.node.current{background:var(--accent);box-shadow:0 5px 0 #6E1212;transform:scale(1.06)}
+.node.current .n{color:#fff}
+.node.current::after{content:'СТАРТ';position:absolute;top:-24px;background:var(--accent);color:#fff;font-size:.62rem;font-weight:800;
+  letter-spacing:.08em;padding:3px 9px;border-radius:10px;white-space:nowrap}
+.node-label{font-size:.82rem;color:var(--text-muted);max-width:230px;text-align:center;margin-top:7px;line-height:1.35}
+.node-label b{display:block;color:var(--text);font-weight:600;font-size:.9rem}
+.offset-1{transform:translateX(-64px)}
+.offset-2{transform:translateX(-36px)}
+.offset-3{transform:translateX(36px)}
+.offset-4{transform:translateX(64px)}
 
-        .user-info {
-            padding: 0 24px 24px;
-            border-bottom: 1px solid #333;
-            margin-bottom: 16px;
-        }
+.modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;margin-bottom:30px}
+.module-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:.2s;text-align:left;font-family:inherit;width:100%;color:var(--text)}
+.module-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-2px)}
+.module-card.soon{opacity:.7;cursor:default}
+.module-card.soon:hover{transform:none;border-color:var(--border);box-shadow:none}
+.module-num{font-size:.78rem;font-weight:700;color:var(--accent);margin-bottom:6px;letter-spacing:.02em}
+.module-title{font-weight:700;font-size:1.05rem;margin-bottom:6px}
+.module-desc{font-size:.85rem;color:var(--text-muted);margin-bottom:14px}
+.module-meta{font-size:.85rem;color:var(--text-muted);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.mini-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:10px}
+.mini-fill{height:100%;background:var(--accent);display:block}
+.badge{font-size:.75rem;padding:3px 10px;border-radius:20px;font-weight:700;white-space:nowrap}
+.b-done{background:var(--green-light);color:var(--green)}
+.b-prog{background:var(--accent-light);color:var(--accent)}
+.b-new{background:#EDEDED;color:#555}
+.b-soon{background:var(--warn-bg);color:var(--warn)}
 
-        .user-name {
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
+.btn{border:1px solid var(--border);background:#fff;padding:10px 18px;border-radius:10px;cursor:pointer;font-size:.92rem;font-weight:700;transition:.2s;font-family:inherit;color:var(--text)}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 3px 0 #6E1212}
+.btn-primary:hover{background:var(--accent-hover);border-color:var(--accent-hover);color:#fff}
+.btn-primary:active{transform:translateY(2px);box-shadow:0 1px 0 #6E1212}
+.btn-big{padding:15px 34px;font-size:1rem;border-radius:14px;letter-spacing:.02em}
+.btn-green{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 3px 0 var(--green-dark)}
+.btn-green:hover{background:var(--green-dark);border-color:var(--green-dark);color:#fff}
+.btn:disabled{background:#DCD8D3;border-color:#DCD8D3;color:#8A8A8A;cursor:not-allowed;box-shadow:none}
 
-        .user-level {
-            font-size: 0.85rem;
-            color: #A0A0A0;
-        }
+/* ---------- study screen ---------- */
+.crumbs{font-size:.85rem;color:var(--text-muted);margin-bottom:12px}
+.crumbs a{color:var(--accent);text-decoration:none;cursor:pointer}
+.crumbs a:hover{text-decoration:underline}
+.goal{background:var(--accent-light);border-left:3px solid var(--accent);border-radius:8px;padding:14px 18px;font-size:.95rem;margin-bottom:26px}
+.block{margin-bottom:28px}
+.block-h{display:flex;align-items:center;gap:10px;font-size:1.05rem;font-weight:700;margin-bottom:14px}
+.block-h .dot{width:26px;height:26px;border-radius:8px;background:var(--accent-light);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700}
+.theory-item{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:12px}
+.theory-item h4{font-size:.98rem;margin-bottom:6px}
+.theory-item p{font-size:.94rem;color:#333}
+table.vocab{width:100%;border-collapse:collapse;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+table.vocab th{text-align:left;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);padding:11px 16px;border-bottom:1px solid var(--border);background:#FBFAF8}
+table.vocab td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:.95rem;vertical-align:top}
+table.vocab tr:last-child td{border-bottom:none}
+td.hz{font-family:'Noto Sans SC',sans-serif;font-size:1.3rem;font-weight:500;white-space:nowrap}
+td.py{color:var(--accent);white-space:nowrap}
+.vnote{display:block;font-size:.82rem;color:var(--text-muted);margin-top:3px}
+.gram{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:12px}
+.gram-rule{font-weight:700;margin-bottom:6px}
+.gram-ex{color:#333;font-size:.94rem;margin-bottom:12px}
+.ex-line{border-left:2px solid var(--border);padding:4px 0 4px 14px;margin-bottom:10px}
+.ex-line .h{font-family:'Noto Sans SC',sans-serif;font-size:1.1rem}
+.ex-line .p{color:var(--accent);font-size:.88rem}
+.ex-line .r{color:var(--text-muted);font-size:.9rem}
+.dlg{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:20px}
+.dlg-line{display:flex;gap:12px;margin-bottom:16px}
+.dlg-line:last-child{margin-bottom:0}
+.sp{width:28px;height:28px;border-radius:50%;background:#1A1A1A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0}
+.sp.b{background:var(--accent)}
+.dlg-h{font-family:'Noto Sans SC',sans-serif;font-size:1.15rem}
+.dlg-p{color:var(--accent);font-size:.87rem}
+.dlg-r{color:var(--text-muted);font-size:.9rem}
+.hw{background:var(--warn-bg);border-radius:10px;padding:16px 20px;font-size:.94rem}
+.start-bar{position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--border);padding:16px 0 14px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.start-bar .hint{font-size:.88rem;color:var(--text-muted)}
 
-        .nav-section {
-            padding: 8px 16px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: #777;
-            margin-top: 12px;
-        }
+/* ---------- player (duolingo) ---------- */
+.player{position:fixed;inset:0;background:var(--bg);z-index:200;display:none;flex-direction:column}
+.player.on{display:flex}
+.pl-top{display:flex;align-items:center;gap:16px;padding:16px 24px;max-width:760px;margin:0 auto;width:100%}
+.pl-close{background:none;border:none;font-size:1.5rem;color:var(--text-muted);cursor:pointer;line-height:1;padding:2px 6px}
+.pl-close:hover{color:var(--accent)}
+.seg{flex:1;display:flex;gap:5px}
+.seg i{flex:1;height:12px;background:var(--border);border-radius:6px;transition:background .3s}
+.seg i.ok{background:var(--green)}
+.seg i.cur{background:var(--accent)}
+.pl-hearts{font-size:.95rem;font-weight:700;color:var(--accent);white-space:nowrap}
+.pl-body{flex:1;overflow-y:auto;padding:10px 24px 190px}
+.pl-inner{max-width:660px;margin:0 auto}
+.q-kind{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.q-text{font-size:1.42rem;font-weight:700;line-height:1.35;margin-bottom:26px;letter-spacing:-.01em}
+.q-big{font-family:'Noto Sans SC',sans-serif;font-size:3.2rem;text-align:center;margin:6px 0 28px;line-height:1.15}
+.opts{display:flex;flex-direction:column;gap:12px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:16px 18px;border:2px solid var(--border);
+  border-bottom-width:4px;background:#fff;border-radius:14px;cursor:pointer;font-size:1.02rem;font-family:inherit;transition:.12s;color:var(--text);font-weight:500}
+.opt:hover{border-color:var(--border-strong);background:#FCFBFA}
+.opt .k{width:26px;height:26px;border-radius:7px;border:2px solid var(--border-strong);color:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;flex-shrink:0}
+.opt.sel{border-color:var(--accent);background:var(--accent-light);color:var(--accent);font-weight:700}
+.opt.sel .k{border-color:var(--accent);color:var(--accent)}
+.opt.right{border-color:var(--green);background:var(--green-light);color:var(--green-dark)}
+.opt.right .k{border-color:var(--green);color:var(--green)}
+.opt.wrong{border-color:var(--err);background:var(--err-light);color:var(--err)}
+.opt.wrong .k{border-color:var(--err);color:var(--err)}
+.opt:disabled{cursor:default}
+.inp{width:100%;padding:16px 18px;border:2px solid var(--border);border-bottom-width:4px;border-radius:14px;font-size:1.1rem;font-family:inherit;background:#fff}
+.inp:focus{outline:none;border-color:var(--accent)}
+.inp:disabled{background:#F5F3F1}
+.inp-hint{font-size:.85rem;color:var(--text-muted);margin-top:10px}
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pair-col{display:flex;flex-direction:column;gap:10px}
+.tile{padding:15px 14px;border:2px solid var(--border);border-bottom-width:4px;background:#fff;border-radius:14px;cursor:pointer;
+  font-family:inherit;font-size:1rem;transition:.12s;color:var(--text);text-align:center;font-weight:500}
+.tile.zh{font-family:'Noto Sans SC',sans-serif;font-size:1.3rem}
+.tile:hover{border-color:var(--border-strong)}
+.tile.sel{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
+.tile.matched{border-color:var(--green);background:var(--green-light);color:var(--green-dark);cursor:default;opacity:.55}
+.tile.miss{border-color:var(--err);background:var(--err-light);color:var(--err)}
+.pair-num{display:inline-block;font-size:.72rem;font-weight:800;color:var(--green);margin-right:6px}
 
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 11px 24px;
-            color: #C0C0C0;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-        }
+.pl-foot{position:fixed;left:0;right:0;bottom:0;border-top:2px solid var(--border);background:#fff;padding:18px 24px 22px;z-index:210}
+.pl-foot.good{background:var(--green-light);border-top-color:#BFE3C2}
+.pl-foot.bad{background:var(--err-light);border-top-color:#F5C6C3}
+.pl-foot-inner{max-width:660px;margin:0 auto;display:flex;align-items:center;gap:18px;justify-content:space-between;flex-wrap:wrap}
+.verdict{flex:1;min-width:200px}
+.verdict .t{font-weight:800;font-size:1.05rem;margin-bottom:3px;display:flex;align-items:center;gap:8px}
+.verdict.good .t{color:var(--green)}
+.verdict.bad .t{color:var(--err)}
+.verdict .d{font-size:.9rem;color:#444}
+.verdict .d b{font-family:'Noto Sans SC',sans-serif}
 
-        .nav-item:hover, .nav-item.active {
-            background: rgba(255,255,255,0.08);
-            color: #fff;
-        }
+.finish{max-width:520px;margin:0 auto;text-align:center;padding:30px 0}
+.finish .big{font-size:4rem;line-height:1;margin-bottom:16px}
+.finish h2{font-size:1.7rem;font-weight:800;margin-bottom:8px}
+.finish p{color:var(--text-muted);margin-bottom:26px}
+.finish .cells{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:28px}
+.cell{border:2px solid var(--border);border-radius:14px;padding:14px 10px}
+.cell .l{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:800;margin-bottom:4px}
+.cell .v{font-size:1.3rem;font-weight:800}
+.cell.a{border-color:var(--accent)}.cell.a .v{color:var(--accent)}
+.cell.g{border-color:var(--green)}.cell.g .v{color:var(--green)}
 
-        .nav-item.active {
-            border-left: 3px solid var(--accent);
-            padding-left: 21px;
-        }
+/* ---------- vocab / progress / profile ---------- */
+.searchbar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.searchbar input{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:.95rem}
+.searchbar input:focus{outline:none;border-color:var(--accent)}
+.searchbar select{padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-family:inherit;background:#fff}
+.empty{padding:40px 20px;text-align:center;color:var(--text-muted)}
+.timeline{display:grid;gap:10px}
+.tl-row{display:flex;align-items:center;gap:14px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.tl-row .lbl{font-weight:700;min-width:58px}
+.tl-row .bar{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.tl-row .bar i{display:block;height:100%;background:var(--accent)}
+.tl-row .val{font-size:.86rem;color:var(--text-muted);min-width:92px;text-align:right}
+.field{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:.95rem}
+.field:last-child{border-bottom:none}
+.field span:first-child{color:var(--text-muted)}
+.note-warn{background:var(--warn-bg);color:#7A4A00;border-radius:10px;padding:12px 16px;font-size:.88rem;margin-bottom:20px}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:40}
+.overlay.show{display:block}
 
-        .nav-item .icon { font-size: 1.15rem; width: 24px; text-align: center; }
-
-        .main {
-            flex: 1;
-            margin-left: var(--sidebar-width);
-            padding: 32px 40px;
-            max-width: 1100px;
-        }
-
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 32px;
-        }
-
-        .page-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        .page-subtitle {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-top: 4px;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 36px;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-        }
-
-        .stat-value {
-            font-size: 1.6rem;
-            font-weight: 700;
-        }
-
-        .stat-value.accent { color: var(--accent); }
-
-        .progress-block {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 36px;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .progress-bar {
-            height: 10px;
-            background: var(--border);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--accent);
-            border-radius: 5px;
-            transition: width 0.5s ease;
-        }
-
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-            margin-bottom: 40px;
-        }
-
-        .module-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            cursor: pointer;
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        .module-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-            transform: translateY(-2px);
-        }
-
-        .module-card.locked {
-            opacity: 0.65;
-            cursor: not-allowed;
-        }
-
-        .module-card.locked:hover {
-            transform: none;
-            border-color: var(--border);
-            box-shadow: none;
-        }
-
-        .module-num {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 6px;
-        }
-
-        .module-title {
-            font-weight: 600;
-            font-size: 1.05rem;
-            margin-bottom: 8px;
-        }
-
-        .module-meta {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .module-status {
-            font-size: 0.8rem;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-
-        .status-done {
-            background: var(--success-bg);
-            color: var(--success);
-        }
-
-        .status-progress {
-            background: var(--accent-light);
-            color: var(--accent);
-        }
-
-        .status-locked {
-            background: #F0F0F0;
-            color: #888;
-        }
-
-        .lessons-panel {
-            display: none;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .lessons-panel.active { display: block; }
-
-        .lessons-header {
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .lessons-header h3 { font-size: 1.15rem; }
-
-        .btn-back {
-            background: none;
-            border: 1px solid var(--border);
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .btn-back:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .lesson-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--border);
-            transition: background 0.15s;
-            cursor: pointer;
-        }
-
-        .lesson-item:last-child { border-bottom: none; }
-
-        .lesson-item:hover { background: var(--bg); }
-
-        .lesson-num {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--accent-light);
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .lesson-num.done {
-            background: var(--success);
-            color: white;
-        }
-
-        .lesson-info { flex: 1; }
-
-        .lesson-title { font-weight: 500; margin-bottom: 2px; }
-
-        .lesson-duration {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .lesson-action {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.4);
-            z-index: 40;
-        }
-
-        .overlay.show { display: block; }
-
-        @media (max-width: 900px) {
-            .stats { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            .sidebar.open { transform: translateX(0); }
-            .main {
-                margin-left: 0;
-                padding: 20px 16px;
-            }
-            .menu-btn { display: block; }
-            .stats { grid-template-columns: 1fr 1fr; gap: 12px; }
-            .topbar { gap: 12px; }
-        }
-    </style>
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0;padding:18px 16px 60px}
+  .menu-btn{display:block}
+  .stats{grid-template-columns:1fr 1fr;gap:12px}
+  .page-title{font-size:1.4rem}
+  table.vocab th:nth-child(4),table.vocab td:nth-child(4){display:none}
+  .offset-1{transform:translateX(-40px)}.offset-2{transform:translateX(-22px)}
+  .offset-3{transform:translateX(22px)}.offset-4{transform:translateX(40px)}
+  .q-text{font-size:1.2rem}.q-big{font-size:2.6rem}
+  .pl-body{padding:6px 16px 210px}.pl-top{padding:12px 16px}
+  .pl-foot{padding:16px}
+  .finish .cells{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-    <div class="overlay" id="overlay"></div>
-
-    <div class="layout">
-        <aside class="sidebar" id="sidebar">
-            <a href="index.html" class="sidebar-logo" style="text-decoration:none; color:inherit;">Chinese <span>Up</span></a>
-
-            <div class="user-info">
-                <div class="user-name">Акмаль</div>
-                <div class="user-level">Уровень: HSK 1 · Модуль 1</div>
-            </div>
-
-            <div class="nav-section">Обучение</div>
-            <button class="nav-item active" data-view="dashboard">
-                <span class="icon">🏠</span> Главная
-            </button>
-            <button class="nav-item" data-view="modules">
-                <span class="icon">📚</span> Все модули
-            </button>
-            <button class="nav-item" data-view="progress">
-                <span class="icon">📊</span> Прогресс
-            </button>
-
-            <div class="nav-section">Аккаунт</div>
-            <button class="nav-item" data-view="profile">
-                <span class="icon">👤</span> Профиль
-            </button>
-            <a href="index.html" class="nav-item" style="text-decoration:none;">
-                <span class="icon">🚪</span> Выйти
-            </a>
-        </aside>
-
-        <main class="main">
-            <div class="topbar">
-                <div>
-                    <button class="menu-btn" id="menuBtn">☰</button>
-                    <h1 class="page-title" id="pageTitle">Учебная комната</h1>
-                    <p class="page-subtitle" id="pageSubtitle">Добро пожаловать! Продолжайте с того места, где остановились.</p>
-                </div>
-            </div>
-
-            <div id="view-dashboard">
-                <div class="stats">
-                    <div class="stat-card">
-                        <div class="stat-label">Пройдено уроков</div>
-                        <div class="stat-value accent">18</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Текущий модуль</div>
-                        <div class="stat-value">1</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Общий прогресс</div>
-                        <div class="stat-value">7.5%</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Дней подряд</div>
-                        <div class="stat-value">4</div>
-                    </div>
-                </div>
-
-                <div class="progress-block">
-                    <div class="progress-header">
-                        <span>Прогресс по курсу (HSK1 → HSK3)</span>
-                        <span>18 / 240 уроков</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 7.5%"></div>
-                    </div>
-                </div>
-
-                <h2 class="section-title">Продолжить обучение</h2>
-                <div class="modules-grid" id="continueModules"></div>
-            </div>
-
-            <div id="view-modules" style="display:none;">
-                <h2 class="section-title">Все модули курса</h2>
-                <div class="modules-grid" id="allModules"></div>
-            </div>
-
-            <div class="lessons-panel" id="lessonsPanel">
-                <div class="lessons-header">
-                    <h3 id="lessonsTitle">Модуль 1</h3>
-                    <button class="btn-back" id="btnBack">← Назад</button>
-                </div>
-                <div id="lessonsList"></div>
-            </div>
-
-            <div id="view-progress" style="display:none;">
-                <div class="progress-block">
-                    <div class="progress-header">
-                        <span>Общий прогресс курса</span>
-                        <span>18 / 240</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 7.5%"></div>
-                    </div>
-                </div>
-                <div class="stats" style="margin-top:24px;">
-                    <div class="stat-card">
-                        <div class="stat-label">HSK 1</div>
-                        <div class="stat-value accent">22.5%</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">HSK 2</div>
-                        <div class="stat-value">0%</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">HSK 3</div>
-                        <div class="stat-value">0%</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Всего часов</div>
-                        <div class="stat-value">4.5</div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="view-profile" style="display:none;">
-                <div class="progress-block">
-                    <h3 style="margin-bottom:16px;">Профиль ученика</h3>
-                    <p style="margin-bottom:8px;"><strong>Имя:</strong> Акмаль</p>
-                    <p style="margin-bottom:8px;"><strong>Email:</strong> student@gmail.com</p>
-                    <p style="margin-bottom:8px;"><strong>Дата начала:</strong> 1 августа 2026</p>
-                    <p style="margin-bottom:8px;"><strong>Текущий уровень:</strong> HSK 1</p>
-                    <p><strong>Статус:</strong> Активный ученик</p>
-                </div>
-            </div>
-        </main>
+<div class="overlay" id="overlay"></div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="sidebar-logo">Chinese <span>Up</span></a>
+    <div class="user-info">
+      <div class="user-name">Ученик курса</div>
+      <div class="user-level" id="sbLevel">HSK 1 · Модуль 1</div>
+      <div class="user-xp" id="sbXp">0 XP · 0 дней подряд</div>
     </div>
+    <div class="nav-section">Обучение</div>
+    <button class="nav-item active" data-view="dashboard"><span class="icon">🏠</span> Главная</button>
+    <button class="nav-item" data-view="modules"><span class="icon">📚</span> Все модули</button>
+    <button class="nav-item" data-view="vocab"><span class="icon">🀄</span> Словарь курса</button>
+    <button class="nav-item" data-view="progress"><span class="icon">📊</span> Прогресс</button>
+    <div class="nav-section">Аккаунт</div>
+    <button class="nav-item" data-view="profile"><span class="icon">👤</span> Профиль</button>
+    <a href="index.html" class="nav-item" style="text-decoration:none"><span class="icon">🚪</span> Выйти</a>
+  </aside>
 
-    <script>
-        const modules = [
-            { id: 1, title: "Основы произношения и пиньинь", lessons: 20, done: 18, status: "progress", hsk: "HSK1" },
-            { id: 2, title: "Базовые фразы и приветствия", lessons: 20, done: 0, status: "locked", hsk: "HSK1" },
-            { id: 3, title: "Числа, время и даты", lessons: 20, done: 0, status: "locked", hsk: "HSK1" },
-            { id: 4, title: "Семья и описание людей", lessons: 20, done: 0, status: "locked", hsk: "HSK1" },
-            { id: 5, title: "Еда и ресторан", lessons: 20, done: 0, status: "locked", hsk: "HSK2" },
-            { id: 6, title: "Покупки и деньги", lessons: 20, done: 0, status: "locked", hsk: "HSK2" },
-            { id: 7, title: "Транспорт и направления", lessons: 20, done: 0, status: "locked", hsk: "HSK2" },
-            { id: 8, title: "Работа и учёба", lessons: 20, done: 0, status: "locked", hsk: "HSK2" },
-            { id: 9, title: "Путешествия", lessons: 20, done: 0, status: "locked", hsk: "HSK3" },
-            { id: 10, title: "Здоровье и самочувствие", lessons: 20, done: 0, status: "locked", hsk: "HSK3" },
-            { id: 11, title: "Хобби и свободное время", lessons: 20, done: 0, status: "locked", hsk: "HSK3" },
-            { id: 12, title: "Подготовка к HSK3", lessons: 20, done: 0, status: "locked", hsk: "HSK3" },
-        ];
+  <main class="main">
+    <div class="topbar">
+      <button class="menu-btn" id="menuBtn">☰</button>
+      <h1 class="page-title" id="pageTitle">Учебная комната</h1>
+      <p class="page-subtitle" id="pageSubtitle">Загружаем материалы курса…</p>
+    </div>
+    <div id="views"></div>
+  </main>
+</div>
 
-        const lessonTitles = [
-            "Введение в урок", "Новые слова", "Произношение", "Грамматика", "Диалог",
-            "Практика чтения", "Аудирование", "Письмо иероглифов", "Упражнения", "Проверка"
-        ];
+<!-- ================= ТРЕНАЖЁР ================= -->
+<div class="player" id="player">
+  <div class="pl-top">
+    <button class="pl-close" id="plClose" title="Выйти из урока">✕</button>
+    <div class="seg" id="plSeg"></div>
+    <div class="pl-hearts" id="plHearts"></div>
+  </div>
+  <div class="pl-body"><div class="pl-inner" id="plBody"></div></div>
+  <div class="pl-foot" id="plFoot"><div class="pl-foot-inner" id="plFootInner"></div></div>
+</div>
 
-        function statusLabel(status) {
-            if (status === "done") return '<span class="module-status status-done">Пройден</span>';
-            if (status === "progress") return '<span class="module-status status-progress">В процессе</span>';
-            return '<span class="module-status status-locked">Закрыт</span>';
-        }
+<script src="data/lessons.js"></script>
+<script>
+/* ============ хранилище прогресса (браузерное хранилище бывает недоступно в iframe) ============ */
+const Store = (() => {
+  const KEY = 'chineseup_progress_v2';
+  const empty = () => ({ done:{}, scores:{}, days:[], xp:0, started:new Date().toISOString().slice(0,10) });
+  let mem = null, ok = true, box = null;
+  try {
+    box = window['local' + 'Storage'];
+    box.setItem('__t','1'); box.removeItem('__t');
+  } catch(e){ ok = false; box = null; }
+  function read(){
+    if(mem) return mem;
+    if(ok){ try{ mem = JSON.parse(box.getItem(KEY)) || empty(); }catch(e){ mem = empty(); } }
+    else mem = empty();
+    if(!mem.started){ mem.started = new Date().toISOString().slice(0,10); }
+    if(typeof mem.xp !== 'number') mem.xp = 0;
+    write(); return mem;
+  }
+  function write(){ if(ok && mem){ try{ box.setItem(KEY, JSON.stringify(mem)); }catch(e){} } }
+  return {
+    get: read, persistent: () => ok,
+    isDone: (m,l) => !!read().done[m+'-'+l],
+    score: (m,l) => read().scores[m+'-'+l] || null,
+    complete(m,l,score,xp){
+      const s = read(); const fresh = !s.done[m+'-'+l];
+      s.done[m+'-'+l] = true;
+      if(score) s.scores[m+'-'+l] = score;
+      s.xp += (fresh ? (xp||0) : Math.round((xp||0)/2));
+      const today = new Date().toISOString().slice(0,10);
+      if(!s.days.includes(today)) s.days.push(today);
+      write(); return fresh;
+    },
+    reset(){ mem = empty(); write(); }
+  };
+})();
 
-        function renderModuleCard(m) {
-            const pct = Math.round((m.done / m.lessons) * 100);
-            return `
-                <div class="module-card ${m.status === 'locked' ? 'locked' : ''}" 
-                     data-id="${m.id}" ${m.status !== 'locked' ? 'onclick="openModule('+m.id+')"' : ''}>
-                    <div class="module-num">Модуль ${m.id} · ${m.hsk}</div>
-                    <div class="module-title">${m.title}</div>
-                    <div class="module-meta">
-                        <span>${m.done}/${m.lessons} уроков · ${pct}%</span>
-                        ${statusLabel(m.status)}
-                    </div>
-                </div>
-            `;
-        }
+/* ============ данные ============ */
+const COURSE = window.COURSE || { modules: [], roadmap: [] };
+const byId = id => COURSE.modules.find(m => m.module === id);
+const esc = s => String(s==null?'':s).replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+const plural = (n,a,b,c) => { const x=n%10, y=n%100; return x===1&&y!==11?a:(x>=2&&x<=4&&(y<10||y>=20)?b:c); };
+const norm = s => String(s||'').toLowerCase().replace(/\s+/g,' ').replace(/[.,!?！？。，、]/g,'').trim();
+const bare = s => norm(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s/g,'');
+const shuffle = a => { const r=[...a]; for(let i=r.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [r[i],r[j]]=[r[j],r[i]]; } return r; };
 
-        function renderModules() {
-            const continueEl = document.getElementById('continueModules');
-            const allEl = document.getElementById('allModules');
-            const active = modules.filter(m => m.status === 'progress' || m.status === 'done').slice(-2);
-            continueEl.innerHTML = active.map(m => renderModuleCard(m)).join('') || 
-                modules.slice(0,2).map(m => renderModuleCard(m)).join('');
-            allEl.innerHTML = modules.map(m => renderModuleCard(m)).join('');
-        }
+function moduleStats(m){
+  const total = m.lessons.length;
+  const done = m.lessons.filter(l => Store.isDone(m.module, l.id)).length;
+  return { total, done, pct: total ? Math.round(done/total*100) : 0 };
+}
+function totalStats(){
+  let total=0, done=0, minutes=0;
+  COURSE.modules.forEach(m => { total += m.lessons.length;
+    m.lessons.forEach(l => { if(Store.isDone(m.module,l.id)){ done++; minutes += (l.duration||15); } }); });
+  return { total, done, planned: COURSE.plannedLessons || total, hours:(minutes/60).toFixed(1), pct: total?Math.round(done/total*100):0 };
+}
+function streak(){
+  const days = [...Store.get().days].sort().reverse();
+  if(!days.length) return 0;
+  const d0 = new Date(); d0.setHours(0,0,0,0);
+  const today = d0.toISOString().slice(0,10), yd = new Date(d0.getTime()-864e5).toISOString().slice(0,10);
+  if(days[0] !== today && days[0] !== yd) return 0;
+  let n=1, cur=new Date(days[0]);
+  for(let i=1;i<days.length;i++){
+    const prev = new Date(cur.getTime()-864e5).toISOString().slice(0,10);
+    if(days[i]===prev){ n++; cur=new Date(days[i]); } else break;
+  }
+  return n;
+}
+function nextLesson(){
+  for(const m of COURSE.modules) for(const l of m.lessons) if(!Store.isDone(m.module,l.id)) return {m,l};
+  return null;
+}
 
-        function openModule(id) {
-            const m = modules.find(x => x.id === id);
-            if (!m || m.status === 'locked') return;
+/* ============ роутер ============ */
+const V = document.getElementById('views');
+const titles = {
+  dashboard:['Учебная комната','Один урок в день — и через полгода вы говорите по-китайски.'],
+  modules:['Все модули','12 модулей курса: от пиньиня до уровня HSK 3.'],
+  vocab:['Словарь курса','Все слова из открытых уроков — с пиньинем и переводом.'],
+  progress:['Ваш прогресс','Статистика обучения по модулям и уровням.'],
+  profile:['Профиль','Информация об аккаунте и настройки обучения.']
+};
+function setHead(t,s){ document.getElementById('pageTitle').textContent = t; document.getElementById('pageSubtitle').textContent = s; }
+function markNav(v){ document.querySelectorAll('.nav-item[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view===v)); }
+function go(view,a,b){
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(view==='lessons') return renderPath(a);
+  if(view==='lesson') return renderStudy(a,b);
+  markNav(view); setHead(titles[view][0], titles[view][1]);
+  ({dashboard:renderDashboard,modules:renderModules,vocab:renderVocab,progress:renderProgress,profile:renderProfile}[view])();
+}
 
-            document.getElementById('view-dashboard').style.display = 'none';
-            document.getElementById('view-modules').style.display = 'none';
-            document.getElementById('view-progress').style.display = 'none';
-            document.getElementById('view-profile').style.display = 'none';
-            document.getElementById('lessonsPanel').classList.add('active');
+/* ============ главная ============ */
+function moduleCard(m){
+  const s = moduleStats(m);
+  const badge = s.done===s.total ? '<span class="badge b-done">Пройден</span>'
+    : s.done>0 ? '<span class="badge b-prog">В процессе</span>' : '<span class="badge b-new">Не начат</span>';
+  return `<button class="module-card" onclick="go('lessons',${m.module})">
+    <div class="module-num">Модуль ${m.module} · ${esc(m.hsk)}</div>
+    <div class="module-title">${esc(m.title)}</div>
+    <div class="module-desc">${esc(m.summary||'')}</div>
+    <div class="mini-bar"><i class="mini-fill" style="width:${s.pct}%"></i></div>
+    <div class="module-meta"><span>${s.done}/${s.total} уроков · ${s.pct}%</span>${badge}</div>
+  </button>`;
+}
+function soonCard(r){
+  return `<div class="module-card soon">
+    <div class="module-num">Модуль ${r.module} · ${esc(r.hsk)}</div>
+    <div class="module-title">${esc(r.title)}</div>
+    <div class="module-desc">${esc(r.summary||'')}</div>
+    <div class="module-meta"><span>20 уроков</span><span class="badge b-soon">В подготовке</span></div>
+  </div>`;
+}
+function renderDashboard(){
+  const t = totalStats(), nx = nextLesson(), st = streak(), s = Store.get();
+  const cur = nx ? nx.m : COURSE.modules[COURSE.modules.length-1];
+  V.innerHTML = `
+  ${Store.persistent()?'':'<div class="note-warn">Прогресс сохраняется только на время этого визита: браузер заблокировал локальное хранилище (так бывает при просмотре во встроенном окне). На обычном сайте прогресс сохранится.</div>'}
+  <div class="stats">
+    <div class="stat-card"><div class="stat-label">Пройдено уроков</div><div class="stat-value accent">${t.done}</div><div class="stat-hint">из ${t.total} открытых</div></div>
+    <div class="stat-card"><div class="stat-label">Опыт</div><div class="stat-value">${s.xp} XP</div><div class="stat-hint">10 XP за урок без ошибок</div></div>
+    <div class="stat-card"><div class="stat-label">Дней подряд</div><div class="stat-value">${st}</div><div class="stat-hint">${st?plural(st,'день','дня','дней')+' без пропуска':'начните сегодня'}</div></div>
+    <div class="stat-card"><div class="stat-label">Часов занятий</div><div class="stat-value">${t.hours}</div><div class="stat-hint">по длительности уроков</div></div>
+  </div>
+  ${nx ? `<div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap">
+    <div>
+      <div style="font-size:.74rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Продолжить обучение</div>
+      <div style="font-weight:800;font-size:1.12rem;margin-bottom:4px">Модуль ${nx.m.module} · Урок ${nx.l.id}. ${esc(nx.l.title)}</div>
+      <div style="font-size:.9rem;color:var(--text-muted)">${esc(nx.l.goal||'')} · 7 вопросов, ≈ ${nx.l.duration||15} мин</div>
+    </div>
+    <button class="btn btn-primary btn-big" onclick="go('lesson',${nx.m.module},${nx.l.id})">Начать урок</button>
+  </div>` : `<div class="card"><strong style="font-size:1.05rem">Все открытые уроки пройдены. 太好了！</strong>
+    <p style="color:var(--text-muted);font-size:.92rem;margin-top:6px">Повторяйте слова в разделе «Словарь курса» — следующие модули уже готовятся.</p></div>`}
+  <div class="card">
+    <div class="progress-header"><span>Прогресс по открытым материалам</span><span>${t.done} / ${t.total} уроков</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:${t.pct}%"></div></div>
+    <p style="font-size:.86rem;color:var(--text-muted);margin-top:10px">Полный курс — ${t.planned} уроков в 12 модулях. Сейчас открыты модули 1–3 (HSK 1) с полным содержанием: теория, слова, грамматика, диалог и 7 упражнений в каждом уроке.</p>
+  </div>
+  <h2 class="section-title">Открытые модули</h2>
+  <div class="modules-grid">${COURSE.modules.map(moduleCard).join('')}</div>`;
+}
+function renderModules(){
+  V.innerHTML = `<h2 class="section-title">Доступно сейчас · HSK 1</h2>
+  <div class="modules-grid">${COURSE.modules.map(moduleCard).join('')}</div>
+  <h2 class="section-title">Дальше по программе</h2>
+  <div class="modules-grid">${(COURSE.roadmap||[]).map(soonCard).join('')}</div>`;
+}
 
-            document.getElementById('lessonsTitle').textContent = `Модуль ${m.id}: ${m.title}`;
-            
-            let html = '';
-            for (let i = 1; i <= m.lessons; i++) {
-                const isDone = i <= m.done;
-                const title = lessonTitles[(i-1) % lessonTitles.length] + (i > 10 ? ` ${Math.ceil(i/10)}` : '');
-                html += `
-                    <div class="lesson-item">
-                        <div class="lesson-num ${isDone ? 'done' : ''}">${isDone ? '✓' : i}</div>
-                        <div class="lesson-info">
-                            <div class="lesson-title">Урок ${i}. ${title}</div>
-                            <div class="lesson-duration">≈ 15–20 мин</div>
-                        </div>
-                        <div class="lesson-action">${isDone ? 'Повторить' : 'Начать'}</div>
-                    </div>
-                `;
-            }
-            document.getElementById('lessonsList').innerHTML = html;
-        }
+/* ============ путь уроков (как в Duolingo) ============ */
+function renderPath(id){
+  const m = byId(id); if(!m) return go('modules');
+  const s = moduleStats(m);
+  markNav('modules');
+  setHead(`Модуль ${m.module}. ${m.title}`, `${m.hsk} · ${s.total} уроков · пройдено ${s.done} (${s.pct}%)`);
+  let firstOpen = true;
+  const nodes = m.lessons.map((l,i) => {
+    const done = Store.isDone(m.module,l.id);
+    const isCur = !done && firstOpen; if(!done) firstOpen = false;
+    const off = 'offset-' + (i % 5);
+    const icon = done ? '✓' : (isCur ? '★' : l.id);
+    return `<div class="node-wrap ${off}">
+      ${i ? `<div class="link ${done?'on':''}"></div>` : ''}
+      <button class="node ${done?'done':''} ${isCur?'current':''}" onclick="go('lesson',${m.module},${l.id})" title="Урок ${l.id}">
+        <span class="n">${icon}</span>
+      </button>
+      <div class="node-label"><b>Урок ${l.id}</b>${esc(l.title)}</div>
+    </div>`;
+  }).join('');
+  V.innerHTML = `<div style="display:flex;justify-content:flex-end;margin-bottom:14px"><button class="btn" onclick="go('modules')">← Ко всем модулям</button></div>
+  <div class="path"><div class="path-module">
+    <div class="path-head">
+      <div><div class="lvl">${esc(m.hsk)} · Модуль ${m.module}</div><h3>${esc(m.title)}</h3></div>
+      <div class="cnt">${s.done}/${s.total}</div>
+    </div>
+    <div class="path-list">${nodes}</div>
+  </div></div>`;
+}
 
-        document.getElementById('btnBack').addEventListener('click', () => {
-            document.getElementById('lessonsPanel').classList.remove('active');
-            showView('modules');
-        });
+/* ============ экран материала урока ============ */
+function renderStudy(mid,lid){
+  const m = byId(mid); if(!m) return go('modules');
+  const l = m.lessons.find(x => x.id===lid); if(!l) return renderPath(mid);
+  markNav('modules');
+  setHead(`Урок ${l.id}. ${l.title}`, `Модуль ${m.module} · ${m.hsk} · ≈ ${l.duration||15} мин · 7 вопросов`);
+  const done = Store.isDone(mid,lid), sc = Store.score(mid,lid);
+  const theory = (l.theory||[]).map(t => `<div class="theory-item"><h4>${esc(t.heading)}</h4><p>${t.body}</p></div>`).join('');
+  const vocab = (l.vocab||[]).length ? `<table class="vocab"><tr><th>Иероглиф</th><th>Пиньинь</th><th>Перевод</th></tr>
+    ${l.vocab.map(v => `<tr><td class="hz">${esc(v.hanzi)}</td><td class="py">${esc(v.pinyin)}</td><td>${esc(v.ru)}${v.note?`<span class="vnote">${esc(v.note)}</span>`:''}</td></tr>`).join('')}</table>` : '';
+  const gram = (l.grammar||[]).map(g => `<div class="gram"><div class="gram-rule">${esc(g.rule)}</div><div class="gram-ex">${esc(g.explain)}</div>
+    ${(g.examples||[]).map(e => `<div class="ex-line"><div class="h">${esc(e.hanzi)}</div><div class="p">${esc(e.pinyin)}</div><div class="r">${esc(e.ru)}</div></div>`).join('')}</div>`).join('');
+  const dlg = l.dialogue ? `<div class="dlg"><div style="font-weight:700;margin-bottom:16px">${esc(l.dialogue.title||'Диалог')}</div>
+    ${(l.dialogue.lines||[]).map(x => `<div class="dlg-line"><div class="sp ${x.speaker==='B'?'b':''}">${esc(x.speaker||'A')}</div>
+      <div><div class="dlg-h">${esc(x.hanzi)}</div><div class="dlg-p">${esc(x.pinyin)}</div><div class="dlg-r">${esc(x.ru)}</div></div></div>`).join('')}</div>` : '';
+  V.innerHTML = `
+  <div class="crumbs"><a onclick="go('modules')">Все модули</a> / <a onclick="go('lessons',${mid})">Модуль ${mid}. ${esc(m.title)}</a> / Урок ${l.id}</div>
+  ${done ? `<div class="card" style="background:var(--green-light);border-color:#BFE3C2;padding:14px 18px;margin-bottom:20px;font-size:.92rem;color:var(--green-dark)">
+    ✓ Урок уже пройден${sc?` · результат ${esc(sc)}`:''}. Можно повторить тренажёр — это полезно для памяти.</div>` : ''}
+  ${l.goal ? `<div class="goal"><strong>Цель урока:</strong> ${esc(l.goal)}</div>` : ''}
+  ${theory ? `<div class="block"><div class="block-h"><span class="dot">1</span> Разбор темы</div>${theory}</div>` : ''}
+  ${vocab ? `<div class="block"><div class="block-h"><span class="dot">2</span> Новые слова</div>${vocab}</div>` : ''}
+  ${gram ? `<div class="block"><div class="block-h"><span class="dot">3</span> Грамматика</div>${gram}</div>` : ''}
+  ${dlg ? `<div class="block"><div class="block-h"><span class="dot">4</span> Диалог</div>${dlg}</div>` : ''}
+  ${l.homework ? `<div class="block"><div class="block-h"><span class="dot">5</span> Домашнее задание</div><div class="hw">${esc(l.homework)}</div></div>` : ''}
+  <div class="start-bar">
+    <div class="hint">Готовы? В тренажёре ${(l.exercises||[]).length} ${plural((l.exercises||[]).length,'вопрос','вопроса','вопросов')} по одному на экран. Ошиблись — вопрос вернётся в конец.</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      ${lid>1?`<button class="btn" onclick="go('lesson',${mid},${lid-1})">←</button>`:''}
+      ${lid<m.lessons.length?`<button class="btn" onclick="go('lesson',${mid},${lid+1})">→</button>`:''}
+      <button class="btn btn-primary btn-big" onclick="startPractice(${mid},${lid})">Начать тренажёр</button>
+    </div>
+  </div>`;
+}
 
-        function showView(view) {
-            ['dashboard','modules','progress','profile'].forEach(v => {
-                document.getElementById('view-' + v).style.display = v === view ? 'block' : 'none';
-            });
-            document.getElementById('lessonsPanel').classList.remove('active');
+/* ============ ТРЕНАЖЁР (Duolingo-стиль) ============ */
+const P = { mid:null, lid:null, queue:[], total:0, idx:0, right:0, mistakes:0, cur:null, state:'ask', sel:null, pair:{} };
+const plEl = document.getElementById('player');
 
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            const btn = document.querySelector(`[data-view="${view}"]`);
-            if (btn) btn.classList.add('active');
+function startPractice(mid,lid){
+  const m = byId(mid), l = m.lessons.find(x => x.id===lid);
+  const ex = (l.exercises||[]);
+  if(!ex.length){ alert('В этом уроке пока нет упражнений.'); return; }
+  P.mid=mid; P.lid=lid; P.total=ex.length; P.idx=0; P.right=0; P.mistakes=0;
+  P.queue = ex.map((e,i) => ({e, n:i+1, retry:false}));
+  plEl.classList.add('on'); document.body.classList.add('locked');
+  drawQuestion();
+}
+function closePractice(){
+  plEl.classList.remove('on'); document.body.classList.remove('locked');
+  refreshSidebar(); go('lesson', P.mid, P.lid);
+}
+document.getElementById('plClose').addEventListener('click', () => {
+  if(P.state==='finish' || confirm('Выйти из урока? Прогресс этого тренажёра не сохранится.')) closePractice();
+});
 
-            const titles = {
-                dashboard: ['Учебная комната', 'Добро пожаловать! Продолжайте с того места, где остановились.'],
-                modules: ['Все модули', '12 модулей от HSK1 до HSK3'],
-                progress: ['Ваш прогресс', 'Статистика обучения'],
-                profile: ['Профиль', 'Информация об аккаунте']
-            };
-            document.getElementById('pageTitle').textContent = titles[view][0];
-            document.getElementById('pageSubtitle').textContent = titles[view][1];
-        }
+function drawSeg(){
+  const seg = document.getElementById('plSeg');
+  seg.innerHTML = Array.from({length:P.total}, (_,i) =>
+    `<i class="${i < P.idx ? 'ok' : (i===P.idx?'cur':'')}"></i>`).join('');
+  document.getElementById('plHearts').textContent = P.mistakes ? '✗ ' + P.mistakes : '✓ ' + P.right + '/' + P.total;
+}
+function kindLabel(e){
+  if(e.type==='choice') return 'Выберите верный вариант';
+  if(e.type==='input') return 'Введите ответ';
+  return 'Соотнесите пары';
+}
+function drawQuestion(){
+  if(!P.queue.length) return drawFinish();
+  P.cur = P.queue[0]; P.state='ask'; P.sel=null; P.pair={left:null,right:null,ok:[]};
+  const e = P.cur.e, body = document.getElementById('plBody');
+  drawSeg();
+  let html = `<div class="q-kind">Вопрос ${P.cur.n} из ${P.total} · ${kindLabel(e)}${P.cur.retry?' · повтор':''}</div>
+    <div class="q-text">${esc(e.q)}</div>`;
+  if(e.big) html += `<div class="q-big">${esc(e.big)}</div>`;
+  if(e.type==='choice'){
+    const order = shuffle((e.options||[]).map((o,j) => ({o,j})));
+    P.order = order;
+    html += `<div class="opts">${order.map((it,k) => `<button class="opt" id="opt-${it.j}" onclick="pick(${it.j})">
+      <span class="k">${k+1}</span><span>${esc(it.o)}</span></button>`).join('')}</div>`;
+  } else if(e.type==='input'){
+    html += `<input class="inp" id="plInp" placeholder="Ваш ответ" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <div class="inp-hint">Пиньинь можно писать без тонов: <i>ni hao</i> тоже считается верным.</div>`;
+  } else if(e.type==='match'){
+    const lefts = shuffle(e.pairs||[]), rights = shuffle((e.pairs||[]).map(p => p.right));
+    html += `<div class="pairs">
+      <div class="pair-col">${lefts.map((p,i) => `<button class="tile zh" id="L-${i}" data-v="${esc(p.left)}" onclick="tapLeft(${i})">${esc(p.left)}</button>`).join('')}</div>
+      <div class="pair-col">${rights.map((r,i) => `<button class="tile" id="R-${i}" data-v="${esc(r)}" onclick="tapRight(${i})">${esc(r)}</button>`).join('')}</div>
+    </div>`;
+  }
+  body.innerHTML = html;
+  const foot = document.getElementById('plFoot');
+  foot.className = 'pl-foot';
+  document.getElementById('plFootInner').innerHTML =
+    `<div class="verdict" style="color:var(--text-muted);font-size:.88rem">${e.type==='match'?'Нажмите слово, затем его перевод.':'Выберите или введите ответ.'}</div>
+     <button class="btn btn-primary btn-big" id="plCheck" onclick="checkNow()" disabled>Проверить</button>`;
+  const inp = document.getElementById('plInp');
+  if(inp){ inp.focus(); inp.addEventListener('input', () => { document.getElementById('plCheck').disabled = !inp.value.trim(); }); }
+  document.querySelector('.pl-body').scrollTop = 0;
+}
+function pick(j){
+  if(P.state!=='ask') return;
+  P.sel = j;
+  document.querySelectorAll('.opt').forEach(b => b.classList.remove('sel'));
+  document.getElementById('opt-'+j).classList.add('sel');
+  document.getElementById('plCheck').disabled = false;
+}
+function tapLeft(i){
+  if(P.state!=='ask') return;
+  const el = document.getElementById('L-'+i); if(el.classList.contains('matched')) return;
+  document.querySelectorAll('.pair-col:first-child .tile').forEach(t => t.classList.remove('sel'));
+  el.classList.add('sel'); P.pair.left = i; tryPair();
+}
+function tapRight(i){
+  if(P.state!=='ask') return;
+  const el = document.getElementById('R-'+i); if(el.classList.contains('matched')) return;
+  document.querySelectorAll('.pair-col:last-child .tile').forEach(t => t.classList.remove('sel'));
+  el.classList.add('sel'); P.pair.right = i; tryPair();
+}
+function tryPair(){
+  const {left,right} = P.pair;
+  if(left===null || right===null || left===undefined || right===undefined) return;
+  const L = document.getElementById('L-'+left), R = document.getElementById('R-'+right);
+  const pairs = P.cur.e.pairs || [];
+  const correct = pairs.find(p => p.left === L.dataset.v && p.right === R.dataset.v);
+  if(correct){
+    const n = P.pair.ok.length + 1;
+    [L,R].forEach(t => { t.classList.remove('sel'); t.classList.add('matched'); t.innerHTML = `<span class="pair-num">${n}</span>` + t.textContent; });
+    P.pair.ok.push(correct.left);
+    if(P.pair.ok.length === pairs.length) checkNow();
+  } else {
+    [L,R].forEach(t => { t.classList.add('miss'); });
+    setTimeout(() => { [L,R].forEach(t => { t.classList.remove('miss','sel'); }); }, 600);
+    P.pair.miss = true;
+    document.getElementById('plCheck').disabled = false;
+  }
+  P.pair.left = null; P.pair.right = null;
+}
+function checkNow(){
+  if(P.state!=='ask') return;
+  const e = P.cur.e;
+  let ok = false, correctText = '';
+  if(e.type==='choice'){
+    ok = P.sel === e.answer;
+    correctText = (e.options||[])[e.answer] || '';
+    document.querySelectorAll('.opt').forEach(b => b.disabled = true);
+    (e.options||[]).forEach((o,j) => {
+      const b = document.getElementById('opt-'+j); if(!b) return;
+      b.classList.remove('sel');
+      if(j===e.answer) b.classList.add('right'); else if(j===P.sel) b.classList.add('wrong');
+    });
+  } else if(e.type==='input'){
+    const inp = document.getElementById('plInp'); const val = inp.value;
+    const variants = (Array.isArray(e.answer)?e.answer:[e.answer]);
+    ok = !!val.trim() && (variants.map(norm).includes(norm(val)) || variants.map(bare).includes(bare(val)));
+    correctText = variants[0] || '';
+    inp.disabled = true;
+    inp.style.borderColor = ok ? 'var(--green)' : 'var(--err)';
+  } else if(e.type==='match'){
+    const pairs = e.pairs || [];
+    ok = P.pair.ok.length === pairs.length && !P.pair.miss;
+    correctText = pairs.map(p => `${p.left} — ${p.right}`).join(' · ');
+    document.querySelectorAll('.tile').forEach(t => t.disabled = true);
+  }
+  P.state = 'shown';
+  if(ok){ P.right++; } else { P.mistakes++; }
+  P.queue.shift();
+  if(!ok) P.queue.push({e, n:P.cur.n, retry:true});
+  else P.idx++;
+  drawSeg();
 
-        document.querySelectorAll('[data-view]').forEach(btn => {
-            btn.addEventListener('click', () => showView(btn.dataset.view));
-        });
+  const last = P.queue.length === 0;
+  const foot = document.getElementById('plFoot');
+  foot.className = 'pl-foot ' + (ok ? 'good' : 'bad');
+  document.getElementById('plFootInner').innerHTML = `
+    <div class="verdict ${ok?'good':'bad'}">
+      <div class="t">${ok ? '✓ Верно!' : '✗ Не совсем'}</div>
+      <div class="d">${ok ? esc(e.explain||'Отлично, идём дальше.') : `Правильный ответ: <b>${esc(correctText)}</b>. ${esc(e.explain||'')}`}</div>
+    </div>
+    <button class="btn ${ok?'btn-green':'btn-primary'} btn-big" id="plNext" onclick="${last?'drawFinish()':'drawQuestion()'}">
+      ${last ? 'Завершить' : (ok ? 'Продолжить' : 'Понятно, дальше')}</button>`;
+  document.getElementById('plNext').focus();
+}
+document.addEventListener('keydown', ev => {
+  if(!plEl.classList.contains('on')) return;
+  if(ev.key === 'Enter'){
+    ev.preventDefault();
+    if(P.state==='ask'){ const c = document.getElementById('plCheck'); if(c && !c.disabled) c.click(); }
+    else { const n = document.getElementById('plNext'); if(n) n.click(); }
+  } else if(P.state==='ask' && P.cur && P.cur.e.type==='choice' && /^[1-9]$/.test(ev.key)){
+    const k = +ev.key - 1; if(P.order && P.order[k]) pick(P.order[k].j);
+  }
+});
+function drawFinish(){
+  P.state = 'finish';
+  const m = byId(P.mid), l = m.lessons.find(x => x.id===P.lid);
+  const acc = Math.round(P.right / (P.right + P.mistakes) * 100);
+  const xp = P.mistakes===0 ? 10 : (P.mistakes<=2 ? 7 : 5);
+  const fresh = Store.complete(P.mid, P.lid, `${P.right}/${P.right+P.mistakes} (${acc}%)`, xp);
+  document.getElementById('plSeg').innerHTML = Array.from({length:P.total}, () => '<i class="ok"></i>').join('');
+  document.getElementById('plHearts').textContent = '✓ готово';
+  const nxt = l.id < m.lessons.length ? l.id + 1 : null;
+  document.getElementById('plBody').innerHTML = `
+    <div class="finish">
+      <div class="big">${P.mistakes===0 ? '🏆' : '🎉'}</div>
+      <h2>${P.mistakes===0 ? 'Идеально! 太棒了！' : 'Урок пройден! 很好！'}</h2>
+      <p>Модуль ${m.module} · Урок ${l.id}. ${esc(l.title)}</p>
+      <div class="cells">
+        <div class="cell a"><div class="l">Опыт</div><div class="v">+${fresh?xp:Math.round(xp/2)} XP</div></div>
+        <div class="cell g"><div class="l">Точность</div><div class="v">${acc}%</div></div>
+        <div class="cell"><div class="l">Ошибок</div><div class="v">${P.mistakes}</div></div>
+      </div>
+      <p style="font-size:.9rem">${P.mistakes===0
+        ? 'Все 7 вопросов с первой попытки — материал усвоен, можно идти дальше.'
+        : 'Вопросы с ошибками вы прошли повторно. Перед следующим уроком перечитайте слова этого урока вслух.'}</p>
+    </div>`;
+  const foot = document.getElementById('plFoot');
+  foot.className = 'pl-foot good';
+  document.getElementById('plFootInner').innerHTML = `
+    <button class="btn" onclick="closePractice()">К материалу урока</button>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" onclick="startPractice(${P.mid},${P.lid})">Пройти снова</button>
+      ${nxt ? `<button class="btn btn-green btn-big" onclick="goNext(${nxt})">Урок ${nxt} →</button>`
+            : `<button class="btn btn-green btn-big" onclick="finishModule()">К пути модуля</button>`}
+    </div>`;
+  refreshSidebar();
+}
+function goNext(n){
+  plEl.classList.remove('on'); document.body.classList.remove('locked');
+  go('lesson', P.mid, n);
+}
+function finishModule(){
+  plEl.classList.remove('on'); document.body.classList.remove('locked');
+  go('lessons', P.mid);
+}
 
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
-        document.getElementById('menuBtn').addEventListener('click', () => {
-            sidebar.classList.add('open');
-            overlay.classList.add('show');
-        });
-        overlay.addEventListener('click', () => {
-            sidebar.classList.remove('open');
-            overlay.classList.remove('show');
-        });
+/* ============ словарь ============ */
+function allWords(){
+  const out = [];
+  COURSE.modules.forEach(m => m.lessons.forEach(l => (l.vocab||[]).forEach(v =>
+    out.push({...v, module:m.module, lesson:l.id}))));
+  return out;
+}
+function renderVocab(){
+  const words = allWords();
+  V.innerHTML = `<div class="searchbar">
+      <input id="vq" placeholder="Поиск: иероглиф, пиньинь или перевод…" autocomplete="off">
+      <select id="vm"><option value="">Все модули</option>${COURSE.modules.map(m => `<option value="${m.module}">Модуль ${m.module}</option>`).join('')}</select>
+    </div>
+    <p style="font-size:.9rem;color:var(--text-muted);margin-bottom:14px" id="vcount"></p><div id="vlist"></div>`;
+  const draw = () => {
+    const q = norm(document.getElementById('vq').value), mf = document.getElementById('vm').value;
+    const f = words.filter(w => (!mf || String(w.module)===mf) &&
+      (!q || norm(w.hanzi).includes(q) || norm(w.pinyin).includes(q) || bare(w.pinyin).includes(bare(q)) || norm(w.ru).includes(q)));
+    document.getElementById('vcount').textContent = `${f.length} ${plural(f.length,'слово','слова','слов')} найдено`;
+    document.getElementById('vlist').innerHTML = f.length ? `<table class="vocab">
+      <tr><th>Иероглиф</th><th>Пиньинь</th><th>Перевод</th><th>Урок</th></tr>
+      ${f.map(w => `<tr><td class="hz">${esc(w.hanzi)}</td><td class="py">${esc(w.pinyin)}</td><td>${esc(w.ru)}</td>
+        <td style="font-size:.85rem"><a style="color:var(--accent);cursor:pointer" onclick="go('lesson',${w.module},${w.lesson})">М${w.module}·У${w.lesson}</a></td></tr>`).join('')}
+      </table>` : '<div class="empty">Ничего не найдено. Попробуйте другой запрос.</div>';
+  };
+  document.getElementById('vq').addEventListener('input', draw);
+  document.getElementById('vm').addEventListener('change', draw);
+  draw();
+}
 
-        renderModules();
-    </script>
+/* ============ прогресс ============ */
+function renderProgress(){
+  const t = totalStats(), st = streak(), s = Store.get();
+  const hsk = {};
+  COURSE.modules.forEach(m => { const x = moduleStats(m);
+    hsk[m.hsk] = hsk[m.hsk] || {done:0,total:0}; hsk[m.hsk].done += x.done; hsk[m.hsk].total += x.total; });
+  V.innerHTML = `
+  <div class="card">
+    <div class="progress-header"><span>Открытые материалы</span><span>${t.done} / ${t.total}</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:${t.pct}%"></div></div>
+    <div class="progress-header" style="margin-top:20px"><span>Полный курс до HSK 3</span><span>${t.done} / ${t.planned}</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:${Math.round(t.done/t.planned*100)}%"></div></div>
+  </div>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-label">Опыт</div><div class="stat-value accent">${s.xp} XP</div></div>
+    <div class="stat-card"><div class="stat-label">Дней подряд</div><div class="stat-value">${st}</div></div>
+    <div class="stat-card"><div class="stat-label">Активных дней</div><div class="stat-value">${s.days.length}</div></div>
+    <div class="stat-card"><div class="stat-label">Часов занятий</div><div class="stat-value">${t.hours}</div></div>
+  </div>
+  <h2 class="section-title">По модулям</h2>
+  <div class="timeline">${COURSE.modules.map(m => { const x = moduleStats(m);
+    return `<div class="tl-row"><span class="lbl">М${m.module}</span><span style="flex:1.4;font-size:.92rem">${esc(m.title)}</span>
+      <span class="bar"><i style="width:${x.pct}%"></i></span><span class="val">${x.done}/${x.total} · ${x.pct}%</span></div>`; }).join('')}</div>
+  <h2 class="section-title sp">По уровням HSK</h2>
+  <div class="timeline">
+    ${Object.entries(hsk).map(([k,v]) => { const p = v.total?Math.round(v.done/v.total*100):0;
+      return `<div class="tl-row"><span class="lbl">${esc(k)}</span><span class="bar"><i style="width:${p}%"></i></span><span class="val">${p}% открытого</span></div>`; }).join('')}
+    <div class="tl-row"><span class="lbl">HSK 2</span><span class="bar"><i style="width:0%"></i></span><span class="val">готовится</span></div>
+    <div class="tl-row"><span class="lbl">HSK 3</span><span class="bar"><i style="width:0%"></i></span><span class="val">готовится</span></div>
+  </div>
+  <h2 class="section-title sp">Результаты тренажёров</h2>
+  <div class="timeline">${Object.keys(s.scores).length ? Object.entries(s.scores).map(([k,v]) => {
+      const [mm,ll] = k.split('-'); const mo = byId(+mm); const le = mo && mo.lessons.find(x => x.id === +ll);
+      return `<div class="tl-row"><span class="lbl">М${mm}·У${ll}</span><span style="flex:1;font-size:.92rem">${esc(le?le.title:'')}</span><span class="val">${esc(v)}</span></div>`;
+    }).join('') : '<div class="empty">Пока нет результатов — пройдите первый тренажёр.</div>'}</div>`;
+}
+
+/* ============ профиль ============ */
+function renderProfile(){
+  const s = Store.get(), t = totalStats();
+  const d = new Date(s.started);
+  const started = isNaN(d) ? '—' : d.toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'});
+  V.innerHTML = `
+  <div class="card">
+    <h3 style="margin-bottom:14px">Профиль ученика</h3>
+    <div class="field"><span>Имя</span><span>Ученик курса (замените на имя ученика)</span></div>
+    <div class="field"><span>Доступ</span><span>Личная учебная комната Chinese Up</span></div>
+    <div class="field"><span>Начало обучения</span><span>${started}</span></div>
+    <div class="field"><span>Текущий уровень</span><span>HSK 1</span></div>
+    <div class="field"><span>Открыто уроков</span><span>${t.total} из ${t.planned}</span></div>
+    <div class="field"><span>Пройдено</span><span>${t.done} ${plural(t.done,'урок','урока','уроков')} · ${s.xp} XP</span></div>
+    <div class="field"><span>Хранение прогресса</span><span>${Store.persistent()?'этот браузер (локально)':'только текущая сессия'}</span></div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:10px">Как учиться эффективно</h3>
+    <p style="font-size:.94rem;color:#333;margin-bottom:8px">1. Один урок в день лучше пяти уроков раз в неделю: язык держится на регулярности.</p>
+    <p style="font-size:.94rem;color:#333;margin-bottom:8px">2. Проговаривайте вслух каждое слово и каждую реплику диалога — тоны запоминаются только через голос.</p>
+    <p style="font-size:.94rem;color:#333;margin-bottom:8px">3. Не переходите к следующему модулю, пока в тренажёрах не будет стабильно 7 из 7 с первой попытки.</p>
+    <p style="font-size:.94rem;color:#333">4. Раз в неделю открывайте «Словарь курса» и повторяйте слова прошлых уроков.</p>
+  </div>
+  <div class="card" style="margin-bottom:0">
+    <h3 style="margin-bottom:10px">Сбросить прогресс</h3>
+    <p style="font-size:.9rem;color:var(--text-muted);margin-bottom:14px">Отметки о пройденных уроках, опыт и результаты будут удалены. Материалы уроков останутся.</p>
+    <button class="btn" onclick="if(confirm('Сбросить весь прогресс обучения?')){Store.reset();refreshSidebar();go('profile');}">Сбросить прогресс</button>
+  </div>`;
+}
+
+/* ============ init ============ */
+function refreshSidebar(){
+  const nx = nextLesson(), s = Store.get(), st = streak();
+  document.getElementById('sbLevel').textContent = nx ? `${nx.m.hsk} · Модуль ${nx.m.module}, урок ${nx.l.id}` : 'HSK 1 · все уроки пройдены';
+  document.getElementById('sbXp').textContent = `${s.xp} XP · ${st} ${plural(st,'день','дня','дней')} подряд`;
+}
+document.querySelectorAll('.nav-item[data-view]').forEach(b => b.addEventListener('click', () => {
+  go(b.dataset.view);
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}));
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+});
+document.getElementById('overlay').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+});
+if(!COURSE.modules.length){
+  V.innerHTML = '<div class="card"><strong>Материалы курса не загрузились.</strong><p style="color:var(--text-muted);margin-top:6px">Проверьте, что файл <code>data/lessons.js</code> лежит рядом с этой страницей.</p></div>';
+  setHead('Учебная комната','Ошибка загрузки материалов');
+} else { refreshSidebar(); go('dashboard'); }
+</script>
 </body>
 </html>
