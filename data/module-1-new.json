@@ -1,0 +1,238 @@
+{
+  "module": 1,
+  "hsk": "HSK1",
+  "title": "Первые слова и фразы",
+  "summary": "Учим самые простые приветствия и вопросы. Только переводы, без сложной грамматики. Иероглифы в скобках после пиньиня.",
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Приветствие",
+      "duration": 10,
+      "goal": "Научиться говорить «Привет» по-китайски",
+      "theory": [
+        {"heading": "Самое важное слово", "body": "Nǐ hǎo (你好) — это «Привет». Дословно: «ты хороший»."}
+      ],
+      "vocab": [
+        {"hanzi": "你好", "pinyin": "Nǐ hǎo", "ru": "Привет"},
+        {"hanzi": "好", "pinyin": "hǎo", "ru": "хорошо"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "Привет!",
+        "lines": [
+          {"speaker": "A", "hanzi": "你好！", "pinyin": "Nǐ hǎo!", "ru": "Привет!"},
+          {"speaker": "B", "hanzi": "你好！", "pinyin": "Nǐ hǎo!", "ru": "Привет!"}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Как сказать «Привет»?", "options": ["Nǐ hǎo (你好)", "Zàijiàn (再见)", "Xièxie (谢谢)"], "answer": 0, "explain": "Nǐ hǎo (你好) = Привет"},
+        {"type": "match", "q": "Соотнесите перевод", "pairs": [{"left": "Nǐ hǎo (你好)", "right": "Привет"}, {"left": "hǎo (好)", "right": "хорошо"}], "explain": "Запомните эти слова"},
+        {"type": "input", "q": "Напишите перевод: Привет", "answer": ["Nǐ hǎo", "nǐ hǎo", "你好"], "explain": "Nǐ hǎo (你好) = Привет"}
+      ],
+      "homework": "Повторите 5 раз: Nǐ hǎo (你好)"
+    },
+    {
+      "id": 2,
+      "title": "Как дела?",
+      "duration": 12,
+      "goal": "Научиться спрашивать «Как дела?»",
+      "theory": [
+        {"heading": "Вопрос о делах", "body": "Nǐ hǎo ma? (你好吗？) — «Как дела?». Частица ma (吗) делает вопрос."}
+      ],
+      "vocab": [
+        {"hanzi": "吗", "pinyin": "ma", "ru": "вопросительная частица"},
+        {"hanzi": "你好吗", "pinyin": "Nǐ hǎo ma", "ru": "Как дела?"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "Как дела?",
+        "lines": [
+          {"speaker": "A", "hanzi": "你好吗？", "pinyin": "Nǐ hǎo ma?", "ru": "Как дела?"},
+          {"speaker": "B", "hanzi": "很好。", "pinyin": "Hěn hǎo.", "ru": "Очень хорошо."}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Что означает ma (吗)?", "options": ["Делает вопрос", "Означает «хорошо»", "Означает «ты»"], "answer": 0, "explain": "ma (吗) превращает утверждение в вопрос"},
+        {"type": "choice", "q": "Как спросить «Как дела?»", "options": ["Nǐ hǎo ma? (你好吗？)", "Nǐ hǎo (你好)", "Hěn hǎo (很好)"], "answer": 0, "explain": "Nǐ hǎo ma? (你好吗？) = Как дела?"},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "Nǐ hǎo ma? (你好吗？)", "right": "Как дела?"}, {"left": "Hěn hǎo (很好)", "right": "Очень хорошо"}], "explain": "Диалог урока"},
+        {"type": "input", "q": "Напишите: Как дела? (пиньинь)", "answer": ["Nǐ hǎo ma", "nǐ hǎo ma", "你好吗"], "explain": "Nǐ hǎo ma? (你好吗？)"}
+      ],
+      "homework": "Повторите 5 раз: Nǐ hǎo ma? (你好吗？)"
+    },
+    {
+      "id": 3,
+      "title": "Ответы: хорошо, не очень",
+      "duration": 12,
+      "goal": "Научиться отвечать на вопрос «Как дела?»",
+      "theory": [
+        {"heading": "Простые ответы", "body": "Hěn hǎo (很好) — очень хорошо. Bú tài hǎo (不太好) — не очень хорошо."}
+      ],
+      "vocab": [
+        {"hanzi": "很", "pinyin": "hěn", "ru": "очень"},
+        {"hanzi": "不", "pinyin": "bù", "ru": "не"},
+        {"hanzi": "太", "pinyin": "tài", "ru": "слишком"},
+        {"hanzi": "很好", "pinyin": "Hěn hǎo", "ru": "Очень хорошо"},
+        {"hanzi": "不太好", "pinyin": "Bú tài hǎo", "ru": "Не очень хорошо"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "Ответы",
+        "lines": [
+          {"speaker": "A", "hanzi": "你好吗？", "pinyin": "Nǐ hǎo ma?", "ru": "Как дела?"},
+          {"speaker": "B", "hanzi": "很好。你呢？", "pinyin": "Hěn hǎo. Nǐ ne?", "ru": "Очень хорошо. А ты?"},
+          {"speaker": "A", "hanzi": "不太好。", "pinyin": "Bú tài hǎo.", "ru": "Не очень хорошо."}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Что значит hěn (很)?", "options": ["очень", "не", "слишком"], "answer": 0, "explain": "hěn (很) = очень"},
+        {"type": "choice", "q": "Как сказать «Очень хорошо»?", "options": ["Hěn hǎo (很好)", "Bú tài hǎo (不太好)", "Nǐ hǎo (你好)"], "answer": 0, "explain": "Hěn hǎo (很好) = Очень хорошо"},
+        {"type": "match", "q": "Соотнесите ответы", "pairs": [{"left": "Hěn hǎo (很好)", "right": "Очень хорошо"}, {"left": "Bú tài hǎo (不太好)", "right": "Не очень хорошо"}], "explain": "Ответы на вопрос"},
+        {"type": "input", "q": "Напишите: очень хорошо (пиньинь)", "answer": ["Hěn hǎo", "hěn hǎo", "很好"], "explain": "Hěn hǎo (很好)"}
+      ],
+      "homework": "Повторите 5 раз: Hěn hǎo (很好), Bú tài hǎo (不太好)"
+    },
+    {
+      "id": 4,
+      "title": "МАЛЫЙ ТЕСТ",
+      "duration": 15,
+      "goal": "Проверить знания первых уроков",
+      "theory": [],
+      "vocab": [],
+      "grammar": [],
+      "dialogue": null,
+      "exercises": [
+        {"type": "choice", "q": "Как сказать «Привет»?", "options": ["Nǐ hǎo (你好)", "Zàijiàn (再见)", "Xièxie (谢谢)"], "answer": 0, "explain": "Nǐ hǎo (你好) = Привет"},
+        {"type": "choice", "q": "Как спросить «Как дела?»", "options": ["Nǐ hǎo ma? (你好吗？)", "Nǐ hǎo (你好)", "Hěn hǎo (很好)"], "answer": 0, "explain": "Nǐ hǎo ma? (你好吗？) = Как дела?"},
+        {"type": "choice", "q": "Что значит hěn hǎo (很好)?", "options": ["Очень хорошо", "Не очень хорошо", "Привет"], "answer": 0, "explain": "Hěn hǎo (很好) = Очень хорошо"},
+        {"type": "match", "q": "Соотнесите все фразы", "pairs": [{"left": "Nǐ hǎo (你好)", "right": "Привет"}, {"left": "Nǐ hǎo ma? (你好吗？)", "right": "Как дела?"}, {"left": "Hěn hǎo (很好)", "right": "Очень хорошо"}], "explain": "Все фразы из уроков 1-3"},
+        {"type": "input", "q": "Напишите: Привет (пиньинь)", "answer": ["Nǐ hǎo", "nǐ hǎo", "你好"], "explain": "Nǐ hǎo (你好) = Привет"},
+        {"type": "input", "q": "Напишите: Как дела? (пиньинь)", "answer": ["Nǐ hǎo ma", "nǐ hǎo ma", "你好吗"], "explain": "Nǐ hǎo ma? (你好吗？) = Как дела?"}
+      ],
+      "homework": "Повторите все слова: Nǐ hǎo (你好), Nǐ hǎo ma? (你好吗？), Hěn hǎo (很好)"
+    },
+    {
+      "id": 5,
+      "title": "Спасибо и пожалуйста",
+      "duration": 10,
+      "goal": "Научиться благодарить",
+      "theory": [
+        {"heading": "Благодарность", "body": "Xièxie (谢谢) — «Спасибо». Bú kèqi (不客气) — «Пожалуйста» (в ответ на спасибо)."}
+      ],
+      "vocab": [
+        {"hanzi": "谢谢", "pinyin": "Xièxie", "ru": "Спасибо"},
+        {"hanzi": "不客气", "pinyin": "Bú kèqi", "ru": "Пожалуйста (в ответ)"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "Спасибо",
+        "lines": [
+          {"speaker": "A", "hanzi": "谢谢！", "pinyin": "Xièxie!", "ru": "Спасибо!"},
+          {"speaker": "B", "hanzi": "不客气。", "pinyin": "Bú kèqi.", "ru": "Пожалуйста."}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Как сказать «Спасибо»?", "options": ["Xièxie (谢谢)", "Bú kèqi (不客气)", "Nǐ hǎo (你好)"], "answer": 0, "explain": "Xièxie (谢谢) = Спасибо"},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "Xièxie (谢谢)", "right": "Спасибо"}, {"left": "Bú kèqi (不客气)", "right": "Пожалуйста"}], "explain": "Благодарность"},
+        {"type": "input", "q": "Напишите: Спасибо (пиньинь)", "answer": ["Xièxie", "xièxie", "谢谢"], "explain": "Xièxie (谢谢) = Спасибо"}
+      ],
+      "homework": "Повторите 5 раз: Xièxie (谢谢), Bú kèqi (不客气)"
+    },
+    {
+      "id": 6,
+      "title": "До свидания",
+      "duration": 10,
+      "goal": "Научиться прощаться",
+      "theory": [
+        {"heading": "Прощание", "body": "Zàijiàn (再见) — «До свидания». Дословно: «снова увидеться»."}
+      ],
+      "vocab": [
+        {"hanzi": "再见", "pinyin": "Zàijiàn", "ru": "До свидания"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "Пока!",
+        "lines": [
+          {"speaker": "A", "hanzi": "再见！", "pinyin": "Zàijiàn!", "ru": "До свидания!"},
+          {"speaker": "B", "hanzi": "再见！", "pinyin": "Zàijiàn!", "ru": "До свидания!"}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Как сказать «До свидания»?", "options": ["Zàijiàn (再见)", "Nǐ hǎo (你好)", "Xièxie (谢谢)"], "answer": 0, "explain": "Zàijiàn (再见) = До свидания"},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "Zàijiàn (再见)", "right": "До свидания"}, {"left": "Nǐ hǎo (你好)", "right": "Привет"}], "explain": "Приветствие и прощание"},
+        {"type": "input", "q": "Напишите: До свидания (пиньинь)", "answer": ["Zàijiàn", "zàijiàn", "再见"], "explain": "Zàijiàn (再见) = До свидания"}
+      ],
+      "homework": "Повторите 5 раз: Zàijiàn (再见)"
+    },
+    {
+      "id": 7,
+      "title": "Я и ты",
+      "duration": 12,
+      "goal": "Научиться говорить «я» и «ты»",
+      "theory": [
+        {"heading": "Местоимения", "body": "Wǒ (我) — «я». Nǐ (你) — «ты». Это самые важные местоимения."}
+      ],
+      "vocab": [
+        {"hanzi": "我", "pinyin": "Wǒ", "ru": "Я"},
+        {"hanzi": "你", "pinyin": "Nǐ", "ru": "Ты"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "Я и ты",
+        "lines": [
+          {"speaker": "A", "hanzi": "你好吗？", "pinyin": "Nǐ hǎo ma?", "ru": "Как дела?"},
+          {"speaker": "B", "hanzi": "我很好。你呢？", "pinyin": "Wǒ hěn hǎo. Nǐ ne?", "ru": "У меня хорошо. А у тебя?"},
+          {"speaker": "A", "hanzi": "我也很好。", "pinyin": "Wǒ yě hěn hǎo.", "ru": "У меня тоже хорошо."}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Что значит wǒ (我)?", "options": ["я", "ты", "он"], "answer": 0, "explain": "Wǒ (我) = я"},
+        {"type": "choice", "q": "Что значит nǐ (你)?", "options": ["ты", "я", "она"], "answer": 0, "explain": "Nǐ (你) = ты"},
+        {"type": "match", "q": "Соотнесите местоимения", "pairs": [{"left": "Wǒ (我)", "right": "Я"}, {"left": "Nǐ (你)", "right": "Ты"}], "explain": "Местоимения"},
+        {"type": "input", "q": "Напишите: я (пиньинь)", "answer": ["Wǒ", "wǒ", "我"], "explain": "Wǒ (我) = я"}
+      ],
+      "homework": "Повторите 5 раз: Wǒ (我), Nǐ (你)"
+    },
+    {
+      "id": 8,
+      "title": "Итоговый тест модуля 1",
+      "duration": 20,
+      "goal": "Проверить все знания модуля 1",
+      "theory": [],
+      "vocab": [],
+      "grammar": [],
+      "dialogue": null,
+      "exercises": [
+        {"type": "choice", "q": "Как сказать «Привет»?", "options": ["Nǐ hǎo (你好)", "Zàijiàn (再见)", "Xièxie (谢谢)"], "answer": 0, "explain": "Nǐ hǎo (你好) = Привет"},
+        {"type": "choice", "q": "Как спросить «Как дела?»", "options": ["Nǐ hǎo ma? (你好吗？)", "Nǐ hǎo (你好)", "Hěn hǎo (很好)"], "answer": 0, "explain": "Nǐ hǎo ma? (你好吗？) = Как дела?"},
+        {"type": "choice", "q": "Что значит hěn hǎo (很好)?", "options": ["Очень хорошо", "Не очень хорошо", "Привет"], "answer": 0, "explain": "Hěn hǎo (很好) = Очень хорошо"},
+        {"type": "choice", "q": "Как сказать «Спасибо»?", "options": ["Xièxie (谢谢)", "Bú kèqi (不客气)", "Nǐ hǎo (你好)"], "answer": 0, "explain": "Xièxie (谢谢) = Спасибо"},
+        {"type": "choice", "q": "Как сказать «До свидания»?", "options": ["Zàijiàn (再见)", "Nǐ hǎo (你好)", "Xièxie (谢谢)"], "answer": 0, "explain": "Zàijiàn (再见) = До свидания"},
+        {"type": "choice", "q": "Что значит wǒ (我)?", "options": ["я", "ты", "он"], "answer": 0, "explain": "Wǒ (我) = я"},
+        {"type": "match", "q": "Соотнесите ВСЕ слова", "pairs": [{"left": "Nǐ hǎo (你好)", "right": "Привет"}, {"left": "Nǐ hǎo ma? (你好吗？)", "right": "Как дела?"}, {"left": "Hěn hǎo (很好)", "right": "Очень хорошо"}, {"left": "Xièxie (谢谢)", "right": "Спасибо"}, {"left": "Zàijiàn (再见)", "right": "До свидания"}, {"left": "Wǒ (我)", "right": "Я"}], "explain": "Все слова модуля 1"},
+        {"type": "input", "q": "Напишите: Привет (пиньинь)", "answer": ["Nǐ hǎo", "nǐ hǎo", "你好"], "explain": "Nǐ hǎo (你好) = Привет"},
+        {"type": "input", "q": "Напишите: Спасибо (пиньинь)", "answer": ["Xièxie", "xièxie", "谢谢"], "explain": "Xièxie (谢谢) = Спасибо"},
+        {"type": "input", "q": "Напишите: я (пиньинь)", "answer": ["Wǒ", "wǒ", "我"], "explain": "Wǒ (我) = я"}
+      ],
+      "homework": "Повторите ВСЕ слова модуля 1"
+    }
+  ],
+  "finalTest": {
+    "title": "ТЕСТ ПЕРЕХОДА: Модуль 1 → Модуль 2",
+    "description": "Этот тест нужно пройти, чтобы перейти к модулю 2. Нужно ответить правильно на 80% вопросов.",
+    "passingScore": 80,
+    "questions": [
+      {"type": "choice", "q": "Как сказать «Привет»?", "options": ["Nǐ hǎo (你好)", "Zàijiàn (再见)", "Xièxie (谢谢)"], "answer": 0},
+      {"type": "choice", "q": "Как спросить «Как дела?»", "options": ["Nǐ hǎo ma? (你好吗？)", "Nǐ hǎo (你好)", "Hěn hǎo (很好)"], "answer": 0},
+      {"type": "choice", "q": "Что значит hěn hǎo (很好)?", "options": ["Очень хорошо", "Не очень хорошо", "Привет"], "answer": 0},
+      {"type": "choice", "q": "Как сказать «Спасибо»?", "options": ["Xièxie (谢谢)", "Bú kèqi (不客气)", "Nǐ hǎo (你好)"], "answer": 0},
+      {"type": "choice", "q": "Как сказать «До свидания»?", "options": ["Zàijiàn (再见)", "Nǐ hǎo (你好)", "Xièxie (谢谢)"], "answer": 0},
+      {"type": "choice", "q": "Что значит wǒ (我)?", "options": ["я", "ты", "он"], "answer": 0},
+      {"type": "choice", "q": "Что значит nǐ (你)?", "options": ["ты", "я", "она"], "answer": 0},
+      {"type": "choice", "q": "Как сказать «не очень хорошо»?", "options": ["Bú tài hǎo (不太好)", "Hěn hǎo (很好)", "Nǐ hǎo (你好)"], "answer": 0},
+      {"type": "match", "q": "Соотнесите ВСЕ слова", "pairs": [{"left": "Nǐ hǎo (你好)", "right": "Привет"}, {"left": "Nǐ hǎo ma? (你好吗？)", "right": "Как дела?"}, {"left": "Hěn hǎo (很好)", "right": "Очень хорошо"}, {"left": "Xièxie (谢谢)", "right": "Спасибо"}, {"left": "Zàijiàn (再见)", "right": "До свидания"}]},
+      {"type": "input", "q": "Напишите: Привет (пиньинь)", "answer": ["Nǐ hǎo", "nǐ hǎo", "你好"]},
+      {"type": "input", "q": "Напишите: Спасибо (пиньинь)", "answer": ["Xièxie", "xièxie", "谢谢"]},
+      {"type": "input", "q": "Напишите: я (пиньинь)", "answer": ["Wǒ", "wǒ", "我"]}
+    ]
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "module": 1,
+  "hsk": "HSK1",
+  "title": "Основы произношения и пиньинь",
+  "summary": "После модуля ученик читает и записывает базовый пиньинь с тонами, применяет основные тональные изменения и различает ключевые китайские звуки.",
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Пиньинь: карта китайского слога",
+      "duration": 15,
+      "goal": "Понимать, что такое пиньинь и из чего состоит слог.",
+      "theory": [
+        {"heading": "Зачем нужен пиньинь", "body": "Пиньинь — запись звуков латиницей. 中国 = Zhōngguó."},
+        {"heading": "Части слога", "body": "Слог = инициаль + финаль + тон. Один иероглиф = один слог."}
+      ],
+      "vocab": [
+        {"hanzi": "中国", "pinyin": "Zhōngguó", "ru": "Китай"},
+        {"hanzi": "人", "pinyin": "rén", "ru": "человек"},
+        {"hanzi": "名字", "pinyin": "míngzi", "ru": "имя"}
+      ],
+      "grammar": [{"rule": "Один иероглиф — один слог", "explain": "每个汉字一个音节", "examples": [{"hanzi": "中国", "pinyin": "Zhōngguó", "ru": "Китай"}]}],
+      "dialogue": {"title": "Знакомство", "lines": [
+        {"speaker": "A", "hanzi": "你叫什么名字？", "pinyin": "Nǐ jiào shénme míngzi?", "ru": "Как тебя зовут?"},
+        {"speaker": "B", "hanzi": "我叫安娜。", "pinyin": "Wǒ jiào Ānnà.", "ru": "Меня зовут Анна."}
+      ]},
+      "exercises": [
+        {"type": "choice", "q": "Что такое пиньинь?", "options": ["Запись звуков", "Иероглифы", "Грамматика"], "answer": 0, "explain": "Пиньинь использует латиницу."},
+        {"type": "choice", "q": "Сколько слогов в 中国？", "options": ["1", "2", "3"], "answer": 1, "explain": "Zhōng-guó = 2 слога."},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "人", "right": "человек"}, {"left": "名字", "right": "имя"}, {"left": "中国", "right": "Китай"}], "explain": "Слова урока."},
+        {"type": "input", "q": "Напишите пиньинь: 中国 (без тонов)", "answer": ["zhongguo", "zhōngguó"], "explain": "中国 = zhōngguó"}
+      ],
+      "homework": "Прочитайте 5 раз: 中国，人，名字"
+    },
+    {
+      "id": 2,
+      "title": "Четыре тона и нейтральный",
+      "duration": 18,
+      "goal": "Различать 4 тона и нейтральный.",
+      "theory": [
+        {"heading": "Тоны", "body": "1-й ровный (mā), 2-й вверх (má), 3-й вниз-вверх (mǎ), 4-й вниз (mà)."},
+        {"heading": "Нейтральный", "body": "Без значка, короткий: māma."}
+      ],
+      "vocab": [
+        {"hanzi": "妈妈", "pinyin": "māma", "ru": "мама"},
+        {"hanzi": "爸爸", "pinyin": "bàba", "ru": "папа"},
+        {"hanzi": "吗", "pinyin": "ma", "ru": "вопрос"}
+      ],
+      "grammar": [{"rule": "Тон — часть слога", "explain": "mā≠má≠mǎ≠mà", "examples": [{"hanzi": "妈妈好吗？", "pinyin": "Māma hǎo ma?", "ru": "Мама в порядке?"}]}],
+      "dialogue": {"title": "О семье", "lines": [
+        {"speaker": "A", "hanzi": "妈妈好吗？", "pinyin": "Māma hǎo ma?", "ru": "Мама в порядке?"},
+        {"speaker": "B", "hanzi": "很好。", "pinyin": "Hěn hǎo.", "ru": "Очень хорошо."}
+      ]},
+      "exercises": [
+        {"type": "choice", "q": "Какой тон в mǎ？", "options": ["1", "3", "4"], "answer": 1, "explain": "ˇ = 3 тон."},
+        {"type": "choice", "q": "Нейтральный тон — это?", "options": ["Без значка", "С чертой", "С галкой"], "answer": 0, "explain": "Нет знака."},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "妈妈", "right": "мама"}, {"left": "爸爸", "right": "папа"}, {"left": "吗", "right": "вопрос"}], "explain": "Слова с нейтральным."},
+        {"type": "input", "q": "Пиньинь: 妈妈", "answer": ["māma", "mama"], "explain": "mā+ma"},
+        {"type": "choice", "q": "«Хорошо ли?»", "options": ["Hǎo mā?", "Hǎo ma?", "Háo ma?"], "answer": 1, "explain": "吗 = ma."}
+      ],
+      "homework": "10 раз: mā, má, mǎ, mà, ma"
+    },
+    {
+      "id": 3,
+      "title": "Гласные: a, o, e, i, u, ü",
+      "duration": 18,
+      "goal": "Произносить 6 простых финалей.",
+      "theory": [
+        {"heading": "a, o, e", "body": "a как «а», o округлённое, e глубже «э»."},
+        {"heading": "ü", "body": "Скажите «и» и округлите губы."}
+      ],
+      "vocab": [
+        {"hanzi": "我", "pinyin": "wǒ", "ru": "я"},
+        {"hanzi": "你", "pinyin": "nǐ", "ru": "ты"},
+        {"hanzi": "大", "pinyin": "dà", "ru": "большой"}
+      ],
+      "grammar": [{"rule": "Тон над гласной", "explain": "wǒ, nǐ, dà", "examples": [{"hanzi": "我是中国人。", "pinyin": "Wǒ shì Zhōngguó rén.", "ru": "Я китаец."}]}],
+      "dialogue": {"title": "О себе", "lines": [
+        {"speaker": "A", "hanzi": "你是中国人吗？", "pinyin": "Nǐ shì Zhōngguó rén ma?", "ru": "Ты китаец?"},
+        {"speaker": "B", "hanzi": "不是。", "pinyin": "Bú shì.", "ru": "Нет."}
+      ]},
+      "exercises": [
+        {"type": "choice", "q": "Как сказать ü？", "options": ["Как «у»", "«и» + губы", "Как «ы»"], "answer": 1, "explain": "Язык как «и», губы округлены."},
+        {"type": "match", "q": "Местоимения", "pairs": [{"left": "我", "right": "я"}, {"left": "你", "right": "ты"}], "explain": "Базовые слова."},
+        {"type": "choice", "q": "Где тон в wǒ？", "options": ["Над w", "Над o", "В конце"], "answer": 1, "explain": "Над гласной."},
+        {"type": "input", "q": "Пиньинь: 我", "answer": ["wǒ", "wo"], "explain": "3 тон."},
+        {"type": "choice", "q": "大 = ?", "options": ["маленький", "большой", "средний"], "answer": 1, "explain": "dà = большой."}
+      ],
+      "homework": "5 раз: 我，你，大"
+    },
+    {
+      "id": 4,
+      "title": "Инициали b, p, m, f",
+      "duration": 20,
+      "goal": "Различать b/p по выдоху.",
+      "theory": [
+        {"heading": "b и p", "body": "Обе как «п». После p выдох сильнее."},
+        {"heading": "m и f", "body": "m — нос, f — губы к зубам."}
+      ],
+      "vocab": [
+        {"hanzi": "八", "pinyin": "bā", "ru": "8"},
+        {"hanzi": "朋友", "pinyin": "péngyou", "ru": "друг"},
+        {"hanzi": "苹果", "pinyin": "píngguǒ", "ru": "яблоко"}
+      ],
+      "grammar": [{"rule": "p с выдохом", "explain": "p сильнее b", "examples": [{"hanzi": "八个苹果", "pinyin": "Bā ge píngguǒ", "ru": "8 яблок"}]}],
+      "dialogue": {"title": "Покупка", "lines": [
+        {"speaker": "A", "hanzi": "买什么？", "pinyin": "Mǎi shénme?", "ru": "Что покупаешь?"},
+        {"speaker": "B", "hanzi": "苹果。", "pinyin": "Píngguǒ.", "ru": "Яблоки."}
+      ]},
+      "exercises": [
+        {"type": "choice", "q": "С придыханием?", "options": ["b", "p", "m"], "answer": 1, "explain": "p выдыхает."},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "八", "right": "8"}, {"left": "苹果", "right": "яблоко"}, {"left": "朋友", "right": "друг"}], "explain": "Слова."},
+        {"type": "choice", "q": "Выдох?", "options": ["bā > pā", "pā > bā", "="], "answer": 1, "explain": "pā сильнее."},
+        {"type": "input", "q": "Пиньинь: 八", "answer": ["bā", "ba"], "explain": "1 тон."},
+        {"type": "choice", "q": "八个 = ?", "options": ["6", "7", "8"], "answer": 2, "explain": "八 = 8."}
+      ],
+      "homework": "10 раз: bā-pā"
+    },
+    {
+      "id": 5,
+      "title": "Инициали d, t, n, l",
+      "duration": 20,
+      "goal": "Ставить язык правильно.",
+      "theory": [
+        {"heading": "d и t", "body": "Язык за зубами. t с выдохом."},
+        {"heading": "n и l", "body": "n — нос, l — сбоку."}
+      ],
+      "vocab": [
+        {"hanzi": "老师", "pinyin": "lǎoshī", "ru": "учитель"},
+        {"hanzi": "六", "pinyin": "liù", "ru": "6"},
+        {"hanzi": "你", "pinyin": "nǐ", "ru": "ты"}
+      ],
+      "grammar": [{"rule": "t придыхательная", "explain": "d/t одинаково, t с выдохом", "examples": [{"hanzi": "老师好！", "pinyin": "Lǎoshī hǎo!", "ru": "Здравствуйте!"}]}],
+      "dialogue": {"title": "В классе", "lines": [
+        {"speaker": "A", "hanzi": "老师好！", "pinyin": "Lǎoshī hǎo!", "ru": "Учитель, здравствуйте!"},
+        {"speaker": "B", "hanzi": "你好！", "pinyin": "Nǐ hǎo!", "ru": "Здравствуйте!"}
+      ]},
+      "exercises": [
+        {"type": "choice", "q": "Носовая?", "options": ["l", "n", "d"], "answer": 1, "explain": "n через нос."},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "老师", "right": "учитель"}, {"left": "六", "right": "6"}], "explain": "Слова."},
+        {"type": "choice", "q": "t vs d?", "options": ["Место", "Выдох", "Тон"], "answer": 1, "explain": "Выдох."},
+        {"type": "input", "q": "Пиньинь: 老师", "answer": ["lǎoshī", "laoshi"], "explain": "3+1 тоны."},
+        {"type": "choice", "q": "六 = ?", "options": ["5", "6", "7"], "answer": 1, "explain": "liù = 6."}
+      ],
+      "homework": "5 раз: dā-tā, nǐ-lǐ"
+    }
+  ]
+}

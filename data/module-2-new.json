@@ -1,0 +1,240 @@
+{
+  "module": 2,
+  "hsk": "HSK1",
+  "title": "О себе и семье",
+  "summary": "Учимся говорить о себе, своей семье и задавать простые вопросы. Иероглифы в скобках после пиньиня.",
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Повторение: Приветствия",
+      "duration": 10,
+      "goal": "Повторить приветствия из модуля 1",
+      "theory": [
+        {"heading": "Вспоминаем", "body": "Nǐ hǎo (你好) — Привет. Nǐ hǎo ma? (你好吗？) — Как дела?"}
+      ],
+      "vocab": [
+        {"hanzi": "你好", "pinyin": "Nǐ hǎo", "ru": "Привет"},
+        {"hanzi": "你好吗", "pinyin": "Nǐ hǎo ma", "ru": "Как дела?"},
+        {"hanzi": "很好", "pinyin": "Hěn hǎo", "ru": "Очень хорошо"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "Встреча",
+        "lines": [
+          {"speaker": "A", "hanzi": "你好！", "pinyin": "Nǐ hǎo!", "ru": "Привет!"},
+          {"speaker": "B", "hanzi": "你好吗？", "pinyin": "Nǐ hǎo ma?", "ru": "Как дела?"},
+          {"speaker": "A", "hanzi": "很好，谢谢！", "pinyin": "Hěn hǎo, xièxie!", "ru": "Очень хорошо, спасибо!"}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Как сказать «Привет»?", "options": ["Nǐ hǎo (你好)", "Zàijiàn (再见)", "Xièxie (谢谢)"], "answer": 0, "explain": "Nǐ hǎo (你好) = Привет"},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "Nǐ hǎo (你好)", "right": "Привет"}, {"left": "Nǐ hǎo ma? (你好吗？)", "right": "Как дела?"}], "explain": "Повторение"},
+        {"type": "input", "q": "Напишите: Как дела? (пиньинь)", "answer": ["Nǐ hǎo ma", "nǐ hǎo ma", "你好吗"], "explain": "Nǐ hǎo ma? (你好吗？)"}
+      ],
+      "homework": "Повторите 5 раз: Nǐ hǎo (你好), Nǐ hǎo ma? (你好吗？)"
+    },
+    {
+      "id": 2,
+      "title": "Меня зовут...",
+      "duration": 12,
+      "goal": "Научиться называть своё имя",
+      "theory": [
+        {"heading": "Как представиться", "body": "Wǒ jiào... (我叫...) — «Меня зовут...». Буквально: «Я называюсь...»"}
+      ],
+      "vocab": [
+        {"hanzi": "叫", "pinyin": "jiào", "ru": "называться"},
+        {"hanzi": "什么", "pinyin": "shénme", "ru": "что"},
+        {"hanzi": "名字", "pinyin": "míngzi", "ru": "имя"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "Знакомство",
+        "lines": [
+          {"speaker": "A", "hanzi": "你叫什么名字？", "pinyin": "Nǐ jiào shénme míngzi?", "ru": "Как тебя зовут?"},
+          {"speaker": "B", "hanzi": "我叫安娜。", "pinyin": "Wǒ jiào Ānnà.", "ru": "Меня зовут Анна."}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Что значит jiào (叫)?", "options": ["называться", "имя", "что"], "answer": 0, "explain": "Jiào (叫) = называться"},
+        {"type": "choice", "q": "Как спросить «Как тебя зовут?»", "options": ["Nǐ jiào shénme míngzi? (你叫什么名字？)", "Wǒ jiào... (我叫...)", "Nǐ hǎo (你好)"], "answer": 0, "explain": "Nǐ jiào shénme míngzi? (你叫什么名字？)"},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "Wǒ jiào... (我叫...)", "right": "Меня зовут..."}, {"left": "Nǐ jiào shénme míngzi? (你叫什么名字？)", "right": "Как тебя зовут?"}], "explain": "Представление"},
+        {"type": "input", "q": "Напишите: Меня зовут... (пиньинь)", "answer": ["Wǒ jiào", "wǒ jiào", "我叫"], "explain": "Wǒ jiào... (我叫...)"}
+      ],
+      "homework": "Повторите 5 раз: Wǒ jiào... (我叫...)"
+    },
+    {
+      "id": 3,
+      "title": "Кто это?",
+      "duration": 12,
+      "goal": "Научиться спрашивать «Кто это?»",
+      "theory": [
+        {"heading": "Вопрос о человеке", "body": "Zhè shì shéi? (这是谁？) — «Кто это?». Shéi (谁) означает «кто»."}
+      ],
+      "vocab": [
+        {"hanzi": "这", "pinyin": "zhè", "ru": "это"},
+        {"hanzi": "是", "pinyin": "shì", "ru": "быть (являться)"},
+        {"hanzi": "谁", "pinyin": "shéi", "ru": "кто"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "Фотография",
+        "lines": [
+          {"speaker": "A", "hanzi": "这是谁？", "pinyin": "Zhè shì shéi?", "ru": "Кто это?"},
+          {"speaker": "B", "hanzi": "这是我妈妈。", "pinyin": "Zhè shì wǒ māma.", "ru": "Это моя мама."}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Что значит shéi (谁)?", "options": ["кто", "что", "где"], "answer": 0, "explain": "Shéi (谁) = кто"},
+        {"type": "choice", "q": "Как спросить «Кто это?»", "options": ["Zhè shì shéi? (这是谁？)", "Zhè shì wǒ (这是我)", "Nǐ hǎo (你好)"], "answer": 0, "explain": "Zhè shì shéi? (这是谁？)"},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "Zhè shì shéi? (这是谁？)", "right": "Кто это?"}, {"left": "Zhè shì... (这是...)", "right": "Это..."}], "explain": "Вопрос и ответ"},
+        {"type": "input", "q": "Напишите: Кто это? (пиньинь)", "answer": ["Zhè shì shéi", "zhè shì shéi", "这是谁"], "explain": "Zhè shì shéi? (这是谁？)"}
+      ],
+      "homework": "Повторите 5 раз: Zhè shì shéi? (这是谁？)"
+    },
+    {
+      "id": 4,
+      "title": "Семья: мама и папа",
+      "duration": 12,
+      "goal": "Научиться говорить о родителях",
+      "theory": [
+        {"heading": "Родители", "body": "Māma (妈妈) — мама. Bàba (爸爸) — папа. Обратите внимание на нейтральный тон!"}
+      ],
+      "vocab": [
+        {"hanzi": "妈妈", "pinyin": "Māma", "ru": "Мама"},
+        {"hanzi": "爸爸", "pinyin": "Bàba", "ru": "Папа"},
+        {"hanzi": "我的", "pinyin": "wǒ de", "ru": "мой"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "Моя семья",
+        "lines": [
+          {"speaker": "A", "hanzi": "这是你妈妈吗？", "pinyin": "Zhè shì nǐ māma ma?", "ru": "Это твоя мама?"},
+          {"speaker": "B", "hanzi": "是，这是我妈妈。", "pinyin": "Shì, zhè shì wǒ māma.", "ru": "Да, это моя мама."}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Что значит māma (妈妈)?", "options": ["мама", "папа", "бабушка"], "answer": 0, "explain": "Māma (妈妈) = мама"},
+        {"type": "choice", "q": "Что значит bàba (爸爸)?", "options": ["папа", "мама", "дедушка"], "answer": 0, "explain": "Bàba (爸爸) = папа"},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "Māma (妈妈)", "right": "Мама"}, {"left": "Bàba (爸爸)", "right": "Папа"}], "explain": "Родители"},
+        {"type": "input", "q": "Напишите: мама (пиньинь)", "answer": ["Māma", "māma", "妈妈"], "explain": "Māma (妈妈)"}
+      ],
+      "homework": "Повторите 5 раз: Māma (妈妈), Bàba (爸爸)"
+    },
+    {
+      "id": 5,
+      "title": "МАЛЫЙ ТЕСТ",
+      "duration": 15,
+      "goal": "Проверить знания уроков 1-4",
+      "theory": [],
+      "vocab": [],
+      "grammar": [],
+      "dialogue": null,
+      "exercises": [
+        {"type": "choice", "q": "Как сказать «Меня зовут...»?", "options": ["Wǒ jiào... (我叫...)", "Nǐ jiào... (你叫...)", "Wǒ shì... (我是...)"], "answer": 0, "explain": "Wǒ jiào... (我叫...)"},
+        {"type": "choice", "q": "Как спросить «Кто это?»", "options": ["Zhè shì shéi? (这是谁？)", "Zhè shì wǒ (这是我)", "Nǐ shì shéi? (你是谁？)"], "answer": 0, "explain": "Zhè shì shéi? (这是谁？)"},
+        {"type": "choice", "q": "Что значит māma (妈妈)?", "options": ["мама", "папа", "сестра"], "answer": 0, "explain": "Māma (妈妈) = мама"},
+        {"type": "match", "q": "Соотнесите фразы", "pairs": [{"left": "Wǒ jiào... (我叫...)", "right": "Меня зовут..."}, {"left": "Zhè shì shéi? (这是谁？)", "right": "Кто это?"}, {"left": "Māma (妈妈)", "right": "Мама"}], "explain": "Фразы уроков 2-4"},
+        {"type": "input", "q": "Напишите: Как тебя зовут? (пиньинь)", "answer": ["Nǐ jiào shénme míngzi", "nǐ jiào shénme míngzi", "你叫什么名字"], "explain": "Nǐ jiào shénme míngzi? (你叫什么名字？)"},
+        {"type": "input", "q": "Напишите: Это моя мама (пиньинь)", "answer": ["Zhè shì wǒ māma", "zhè shì wǒ māma", "这是我妈妈"], "explain": "Zhè shì wǒ māma (这是我妈妈)"}
+      ],
+      "homework": "Повторите все слова: Wǒ jiào (我叫), Zhè shì shéi? (这是谁？), Māma (妈妈)"
+    },
+    {
+      "id": 6,
+      "title": "Братья и сёстры",
+      "duration": 12,
+      "goal": "Научиться говорить о братьях и сёстрах",
+      "theory": [
+        {"heading": "Сиблинги", "body": "Gēge (哥哥) — старший брат. Jiějie (姐姐) — старшая сестра. Dìdi (弟弟) — младший брат. Mèimei (妹妹) — младшая сестра."}
+      ],
+      "vocab": [
+        {"hanzi": "哥哥", "pinyin": "Gēge", "ru": "Старший брат"},
+        {"hanzi": "姐姐", "pinyin": "Jiějie", "ru": "Старшая сестра"},
+        {"hanzi": "弟弟", "pinyin": "Dìdi", "ru": "Младший брат"},
+        {"hanzi": "妹妹", "pinyin": "Mèimei", "ru": "Младшая сестра"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "О семье",
+        "lines": [
+          {"speaker": "A", "hanzi": "你有哥哥吗？", "pinyin": "Nǐ yǒu gēge ma?", "ru": "У тебя есть старший брат?"},
+          {"speaker": "B", "hanzi": "有，我有一个哥哥。", "pinyin": "Yǒu, wǒ yǒu yí ge gēge.", "ru": "Да, у меня есть один старший брат."}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Что значит gēge (哥哥)?", "options": ["старший брат", "младший брат", "старшая сестра"], "answer": 0, "explain": "Gēge (哥哥) = старший брат"},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "Gēge (哥哥)", "right": "Старший брат"}, {"left": "Jiějie (姐姐)", "right": "Старшая сестра"}, {"left": "Dìdi (弟弟)", "right": "Младший брат"}, {"left": "Mèimei (妹妹)", "right": "Младшая сестра"}], "explain": "Сиблинги"},
+        {"type": "input", "q": "Напишите: старший брат (пиньинь)", "answer": ["Gēge", "gēge", "哥哥"], "explain": "Gēge (哥哥)"}
+      ],
+      "homework": "Повторите 5 раз: Gēge (哥哥), Jiějie (姐姐), Dìdi (弟弟), Mèimei (妹妹)"
+    },
+    {
+      "id": 7,
+      "title": "Есть ли у тебя...?",
+      "duration": 12,
+      "goal": "Научиться спрашивать «Есть ли у тебя...?»",
+      "theory": [
+        {"heading": "Вопрос с «yǒu»", "body": "Nǐ yǒu... ma? (你有...吗？) — «Есть ли у тебя...?». Yǒu (有) означает «иметь»."}
+      ],
+      "vocab": [
+        {"hanzi": "有", "pinyin": "yǒu", "ru": "иметь"},
+        {"hanzi": "个", "pinyin": "ge", "ru": "счётное слово"}
+      ],
+      "grammar": [],
+      "dialogue": {
+        "title": "Вопросы о семье",
+        "lines": [
+          {"speaker": "A", "hanzi": "你有弟弟吗？", "pinyin": "Nǐ yǒu dìdi ma?", "ru": "У тебя есть младший брат?"},
+          {"speaker": "B", "hanzi": "没有。", "pinyin": "Méiyǒu.", "ru": "Нет."}
+        ]
+      },
+      "exercises": [
+        {"type": "choice", "q": "Что значит yǒu (有)?", "options": ["иметь", "быть", "знать"], "answer": 0, "explain": "Yǒu (有) = иметь"},
+        {"type": "choice", "q": "Как спросить «Есть ли у тебя брат?»", "options": ["Nǐ yǒu gēge ma? (你有哥哥吗？)", "Wǒ yǒu gēge (我有哥哥)", "Zhè shì gēge (这是哥哥)"], "answer": 0, "explain": "Nǐ yǒu... ma? (你有...吗？)"},
+        {"type": "match", "q": "Соотнесите", "pairs": [{"left": "Nǐ yǒu... ma? (你有...吗？)", "right": "Есть ли у тебя...?"}, {"left": "Wǒ yǒu... (我有...)", "right": "У меня есть..."}], "explain": "Вопрос и ответ"},
+        {"type": "input", "q": "Напишите: У меня есть... (пиньинь)", "answer": ["Wǒ yǒu", "wǒ yǒu", "我有"], "explain": "Wǒ yǒu... (我有...)"}
+      ],
+      "homework": "Повторите 5 раз: Nǐ yǒu... ma? (你有...吗？), Wǒ yǒu... (我有...)"
+    },
+    {
+      "id": 8,
+      "title": "Итоговый тест модуля 2",
+      "duration": 20,
+      "goal": "Проверить все знания модуля 2",
+      "theory": [],
+      "vocab": [],
+      "grammar": [],
+      "dialogue": null,
+      "exercises": [
+        {"type": "choice", "q": "Как сказать «Меня зовут...»?", "options": ["Wǒ jiào... (我叫...)", "Nǐ jiào... (你叫...)", "Wǒ shì... (我是...)"], "answer": 0, "explain": "Wǒ jiào... (我叫...)"},
+        {"type": "choice", "q": "Как спросить «Кто это?»", "options": ["Zhè shì shéi? (这是谁？)", "Zhè shì wǒ (这是我)", "Nǐ shì shéi? (你是谁？)"], "answer": 0, "explain": "Zhè shì shéi? (这是谁？)"},
+        {"type": "choice", "q": "Что значит māma (妈妈)?", "options": ["мама", "папа", "сестра"], "answer": 0, "explain": "Māma (妈妈) = мама"},
+        {"type": "choice", "q": "Что значит gēge (哥哥)?", "options": ["старший брат", "младший брат", "старшая сестра"], "answer": 0, "explain": "Gēge (哥哥) = старший брат"},
+        {"type": "choice", "q": "Как спросить «Есть ли у тебя брат?»", "options": ["Nǐ yǒu gēge ma? (你有哥哥吗？)", "Wǒ yǒu gēge (我有哥哥)", "Zhè shì gēge (这是哥哥)"], "answer": 0, "explain": "Nǐ yǒu... ma? (你有...吗？)"},
+        {"type": "match", "q": "Соотнесите ВСЕ слова", "pairs": [{"left": "Wǒ jiào... (我叫...)", "right": "Меня зовут..."}, {"left": "Zhè shì shéi? (这是谁？)", "right": "Кто это?"}, {"left": "Māma (妈妈)", "right": "Мама"}, {"left": "Bàba (爸爸)", "right": "Папа"}, {"left": "Gēge (哥哥)", "right": "Старший брат"}, {"left": "Jiějie (姐姐)", "right": "Старшая сестра"}], "explain": "Все слова модуля 2"},
+        {"type": "input", "q": "Напишите: Как тебя зовут? (пиньинь)", "answer": ["Nǐ jiào shénme míngzi", "nǐ jiào shénme míngzi", "你叫什么名字"], "explain": "Nǐ jiào shénme míngzi? (你叫什么名字？)"},
+        {"type": "input", "q": "Напишите: Это моя мама (пиньинь)", "answer": ["Zhè shì wǒ māma", "zhè shì wǒ māma", "这是我妈妈"], "explain": "Zhè shì wǒ māma (这是我妈妈)"},
+        {"type": "input", "q": "Напишите: У меня есть брат (пиньинь)", "answer": ["Wǒ yǒu gēge", "wǒ yǒu gēge", "我有哥哥"], "explain": "Wǒ yǒu gēge (我有哥哥)"}
+      ],
+      "homework": "Повторите ВСЕ слова модуля 2"
+    }
+  ],
+  "finalTest": {
+    "title": "ТЕСТ ПЕРЕХОДА: Модуль 2 → Модуль 3",
+    "description": "Этот тест нужно пройти, чтобы перейти к модулю 3. Нужно ответить правильно на 80% вопросов.",
+    "passingScore": 80,
+    "questions": [
+      {"type": "choice", "q": "Как сказать «Меня зовут...»?", "options": ["Wǒ jiào... (我叫...)", "Nǐ jiào... (你叫...)", "Wǒ shì... (我是...)"], "answer": 0},
+      {"type": "choice", "q": "Как спросить «Кто это?»", "options": ["Zhè shì shéi? (这是谁？)", "Zhè shì wǒ (这是我)", "Nǐ shì shéi? (你是谁？)"], "answer": 0},
+      {"type": "choice", "q": "Что значит māma (妈妈)?", "options": ["мама", "папа", "сестра"], "answer": 0},
+      {"type": "choice", "q": "Что значит gēge (哥哥)?", "options": ["старший брат", "младший брат", "старшая сестра"], "answer": 0},
+      {"type": "choice", "q": "Как спросить «Есть ли у тебя брат?»", "options": ["Nǐ yǒu gēge ma? (你有哥哥吗？)", "Wǒ yǒu gēge (我有哥哥)", "Zhè shì gēge (这是哥哥)"], "answer": 0},
+      {"type": "choice", "q": "Что значит jiějie (姐姐)?", "options": ["старшая сестра", "младшая сестра", "мама"], "answer": 0},
+      {"type": "choice", "q": "Что значит yǒu (有)?", "options": ["иметь", "быть", "знать"], "answer": 0},
+      {"type": "match", "q": "Соотнесите ВСЕ слова", "pairs": [{"left": "Wǒ jiào... (我叫...)", "right": "Меня зовут..."}, {"left": "Zhè shì shéi? (这是谁？)", "right": "Кто это?"}, {"left": "Māma (妈妈)", "right": "Мама"}, {"left": "Bàba (爸爸)", "right": "Папа"}, {"left": "Gēge (哥哥)", "right": "Старший брат"}, {"left": "Jiějie (姐姐)", "right": "Старшая сестра"}]},
+      {"type": "input", "q": "Напишите: Как тебя зовут? (пиньинь)", "answer": ["Nǐ jiào shénme míngzi", "nǐ jiào shénme míngzi", "你叫什么名字"]},
+      {"type": "input", "q": "Напишите: Это моя мама (пиньинь)", "answer": ["Zhè shì wǒ māma", "zhè shì wǒ māma", "这是我妈妈"]},
+      {"type": "input", "q": "Напишите: У меня есть брат (пиньинь)", "answer": ["Wǒ yǒu gēge", "wǒ yǒu gēge", "我有哥哥"]}
+    ]
+  }
+}
