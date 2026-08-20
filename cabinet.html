@@ -267,7 +267,7 @@ td.py{color:var(--accent);white-space:nowrap}
   <aside class="sidebar" id="sidebar">
     <a href="index.html" class="sidebar-logo">Chinese <span>Up</span></a>
     <div class="user-info">
-      <div class="user-name">Ученик курса</div>
+      <div class="user-name" id="sbName">Ученик курса</div>
       <div class="user-level" id="sbLevel">HSK 1 · Модуль 1</div>
       <div class="user-xp" id="sbXp">0 XP · 0 дней подряд</div>
     </div>
@@ -489,7 +489,7 @@ function renderStudy(mid,lid){
   markNav('modules');
   setHead(`Урок ${l.id}. ${l.title}`, `Модуль ${m.module} · ${m.hsk} · ≈ ${l.duration||15} мин · 7 вопросов`);
   const done = Store.isDone(mid,lid), sc = Store.score(mid,lid);
-  const theory = (l.theory||[]).map(t => `<div class="theory-item"><h4>${esc(t.heading)}</h4><p>${t.body}</p></div>`).join('');
+  const theory = (l.theory||[]).map(t => `<div class="theory-item"><h4>${esc(t.heading)}</h4><p>${esc(t.body)}</p></div>`).join('');
   const vocab = (l.vocab||[]).length ? `<table class="vocab"><tr><th>Иероглиф</th><th>Пиньинь</th><th>Перевод</th></tr>
     ${l.vocab.map(v => `<tr><td class="hz">${esc(v.hanzi)}</td><td class="py">${esc(v.pinyin)}</td><td>${esc(v.ru)}${v.note?`<span class="vnote">${esc(v.note)}</span>`:''}</td></tr>`).join('')}</table>` : '';
   const gram = (l.grammar||[]).map(g => `<div class="gram"><div class="gram-rule">${esc(g.rule)}</div><div class="gram-ex">${esc(g.explain)}</div>
@@ -790,10 +790,19 @@ function renderProfile(){
   const s = Store.get(), t = totalStats();
   const d = new Date(s.started);
   const started = isNaN(d) ? '—' : d.toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'});
+  const savedName = (function(){ try{ return localStorage.getItem('chineseup_name')||''; }catch(e){ return ''; } })();
   V.innerHTML = `
   <div class="card">
     <h3 style="margin-bottom:14px">Профиль ученика</h3>
-    <div class="field"><span>Имя</span><span>Ученик курса (замените на имя ученика)</span></div>
+    <div class="field" style="align-items:center">
+      <span>Имя</span>
+      <span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <input id="profileName" type="text" value="${esc(savedName)}" placeholder="Ваше имя"
+          style="padding:6px 10px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:.95rem;width:180px">
+        <button class="btn" style="padding:6px 14px;font-size:.88rem" onclick="saveName()">Сохранить</button>
+        <span id="nameSaved" style="font-size:.85rem;color:var(--green);display:none">✓ Сохранено</span>
+      </span>
+    </div>
     <div class="field"><span>Доступ</span><span>Личная учебная комната Chinese Up</span></div>
     <div class="field"><span>Начало обучения</span><span>${started}</span></div>
     <div class="field"><span>Текущий уровень</span><span>HSK 1</span></div>
@@ -815,9 +824,26 @@ function renderProfile(){
   </div>`;
 }
 
+/* ============ имя ============ */
+function saveName(){
+  const inp = document.getElementById('profileName');
+  if(!inp) return;
+  const name = inp.value.trim() || 'Ученик курса';
+  try{ localStorage.setItem('chineseup_name', name); }catch(e){}
+  const el = document.getElementById('sbName');
+  if(el) el.textContent = name;
+  const ok = document.getElementById('nameSaved');
+  if(ok){ ok.style.display='inline'; setTimeout(() => { ok.style.display='none'; }, 2000); }
+}
+
 /* ============ init ============ */
 function refreshSidebar(){
   const nx = nextLesson(), s = Store.get(), st = streak();
+  try{
+    const n = localStorage.getItem('chineseup_name');
+    const el = document.getElementById('sbName');
+    if(el && n) el.textContent = n;
+  }catch(e){}
   document.getElementById('sbLevel').textContent = nx ? `${nx.m.hsk} · Модуль ${nx.m.module}, урок ${nx.l.id}` : 'HSK 1 · все уроки пройдены';
   document.getElementById('sbXp').textContent = `${s.xp} XP · ${st} ${plural(st,'день','дня','дней')} подряд`;
 }

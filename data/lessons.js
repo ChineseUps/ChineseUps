@@ -1845,3 +1845,20 @@ window.COURSE_MODULES = [
     }
   }
 ];
+
+/* ===== совместимость с cabinet.html ===== */
+window.COURSE = {
+  modules: window.COURSE_MODULES,
+  roadmap: [
+    { module: 4,  hsk: "HSK 1", title: "Еда и напитки",          summary: "Заказ в кафе, названия блюд и напитков." },
+    { module: 5,  hsk: "HSK 1", title: "Город и транспорт",       summary: "Ориентация в городе, транспорт, направления." },
+    { module: 6,  hsk: "HSK 1", title: "Покупки и деньги",        summary: "Магазины, цены, числа до 1000." },
+    { module: 7,  hsk: "HSK 2", title: "Работа и учёба",          summary: "Профессии, место работы, распорядок дня." },
+    { module: 8,  hsk: "HSK 2", title: "Здоровье и самочувствие", summary: "Тело, симптомы, визит к врачу." },
+    { module: 9,  hsk: "HSK 2", title: "Погода и природа",        summary: "Времена года, описание природы и климата." },
+    { module: 10, hsk: "HSK 3", title: "Чувства и эмоции",        summary: "Выражение мнений, эмоций и отношений." },
+    { module: 11, hsk: "HSK 3", title: "Путешествия",             summary: "Аэропорт, отель, туристические фразы." },
+    { module: 12, hsk: "HSK 3", title: "Итог: HSK 3",             summary: "Финальный модуль и подготовка к экзамену." }
+  ],
+  plannedLessons: 240
+};

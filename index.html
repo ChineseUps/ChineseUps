@@ -1121,11 +1121,64 @@
         document.querySelectorAll('.fade-in, .step').forEach(el => observer.observe(el));
     </script>
 
-    <!-- Formspree AJAX form handling (no build step) -->
+    <!-- Formspree AJAX form handling -->
     <script>
-        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-        formspree('initForm', { formElement: '#contactForm', formId: 'myegjong' });
+        (function () {
+            var form = document.getElementById('contactForm');
+            if (!form) return;
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var btn = form.querySelector('[data-fs-submit-btn]');
+                var successEl = document.querySelector('[data-fs-success]');
+                var errorEl  = document.querySelector('[data-fs-error]');
+
+                // Hide previous messages
+                successEl.removeAttribute('data-fs-active');
+                errorEl.removeAttribute('data-fs-active');
+
+                // Validate fields
+                var valid = true;
+                form.querySelectorAll('[data-fs-field]').forEach(function (f) {
+                    var errSpan = form.querySelector('[data-fs-error="' + f.name + '"]');
+                    if (!f.value.trim()) {
+                        f.setAttribute('aria-invalid', 'true');
+                        if (errSpan) errSpan.textContent = 'Пожалуйста, заполните это поле.';
+                        valid = false;
+                    } else {
+                        f.removeAttribute('aria-invalid');
+                        if (errSpan) errSpan.textContent = '';
+                    }
+                });
+                if (!valid) return;
+
+                // Disable button during send
+                if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
+
+                var data = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(function (res) {
+                    if (res.ok) {
+                        form.reset();
+                        successEl.setAttribute('data-fs-active', '');
+                        if (btn) { btn.disabled = false; btn.textContent = 'Отправить'; }
+                    } else {
+                        return res.json().then(function (j) { throw new Error(j.error || 'Ошибка сервера'); });
+                    }
+                })
+                .catch(function (err) {
+                    errorEl.textContent = 'Не удалось отправить сообщение. Напишите нам напрямую в WhatsApp или Telegram.';
+                    errorEl.setAttribute('data-fs-active', '');
+                    if (btn) { btn.disabled = false; btn.textContent = 'Отправить'; }
+                });
+            });
+        })();
     </script>
-    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
